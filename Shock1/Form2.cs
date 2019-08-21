@@ -26,6 +26,8 @@ namespace Shock1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            AcceptButton = btnInsert;
+            //Controls = btnInsert;
             dt.Columns.AddRange(new DataColumn[2]
             {
                 new DataColumn("Xi", typeof(float)),
@@ -58,7 +60,16 @@ namespace Shock1
         //
         //VENTANA
         //
-
+        
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnInsert.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
 
         private void BtnInsert_Click(object sender, EventArgs e)
         {
@@ -73,9 +84,10 @@ namespace Shock1
 
                 txtFi.Text = "";
                 txtXi.Text = "";
+
                 ActiveControl = txtXi;
                 txtXi.Focus();
-                txtXi.Select();
+                //txtXi.Select();
             }
             else
             {

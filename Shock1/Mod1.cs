@@ -47,7 +47,7 @@ namespace Shock1
             {
                 return (float)Math.Truncate(100 * aux / getN(dt)) / 100;
             }
-            
+           
         }
 
         public float getN(DataTable dt)
