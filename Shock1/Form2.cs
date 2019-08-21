@@ -32,6 +32,7 @@ namespace Shock1
                 new DataColumn("Fi", typeof(float))
             });
             lblN.Text = 0.ToString();
+            txtXi.Focus();
         }
 
         //
@@ -42,6 +43,18 @@ namespace Shock1
             lblN.Text = objMod1.getN(dt).ToString();
             lblMedia.Text = objMod1.getMedia(dt).ToString();
         }        
+
+        public void refreshTabla()
+        {
+            if (dataGV.Columns.Contains("Fk"))
+            {
+                objMod1.actualizarFk(dt, dataGV);
+            }
+            if (dataGV.Columns.Contains("Frp"))
+            {
+                objMod1.actualizarFrp(dt, dataGV);
+            }
+        }
         //
         //VENTANA
         //
@@ -54,13 +67,15 @@ namespace Shock1
                 dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
                 dataGV.DataSource = dt;
                 refreshDatos();
-                if (dataGV.Columns.Contains("Fk"))
-                {
-                    objMod1.actualizarFk(dt,dataGV);
-                }
+                refreshTabla();
+
+
 
                 txtFi.Text = "";
                 txtXi.Text = "";
+                ActiveControl = txtXi;
+                txtXi.Focus();
+                txtXi.Select();
             }
             else
             {
@@ -82,14 +97,44 @@ namespace Shock1
             if (cbAcumulada.Checked)
             {
                 dt.Columns.Add(new DataColumn("Fk", typeof(float)));
-                if (dt.Rows.Count != 0 && dataGV.Columns.Contains("Fk"))
+                if (dt.Rows.Count != 0 && dt.Columns.Contains("Fk"))
                 {
                     objMod1.actualizarFk(dt, dataGV);
+                }
+
+                if (cbPorcentual.Checked)
+                {
+                    objMod1.actualizarFrp(dt, dataGV);
                 }
             }
             else if (!cbAcumulada.Checked)
             {
                 dt.Columns.Remove("Fk");
+                if (dt.Columns.Contains("Fkrp"))
+                {
+                    dt.Columns.Remove("Fkrp");
+                }
+            }
+        }
+
+        private void CbPorcentual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbPorcentual.Checked)
+            {
+                dt.Columns.Add(new DataColumn("Frp", typeof(float)));
+
+                if (dt.Rows.Count != 0 && dt.Columns.Contains("Frp"))
+                {
+                    objMod1.actualizarFrp(dt,dataGV);
+                }
+            }
+            else if (!cbPorcentual.Checked)
+            {
+                dt.Columns.Remove("Frp");
+                if (dt.Columns.Contains("Fkrp"))
+                {
+                    dt.Columns.Remove("Fkrp");
+                }
             }
         }
 
@@ -105,7 +150,7 @@ namespace Shock1
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         dataGV.Rows[i].Cells["Fi"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fi") / objMod1.getN(dt))) / 1000;
-                        if (dt.Rows.Count != 0 && dataGV.Columns.Contains("Fk"))
+                        if (dt2.Rows.Count != 0 && dt2.Columns.Contains("Fk"))
                         {
                             dataGV.Rows[i].Cells["Fk"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fk") / objMod1.getN(dt))) / 1000;
                         }
@@ -167,6 +212,9 @@ namespace Shock1
             }
             dataGV.Refresh();
             refreshDatos();
+            refreshTabla();
         }
+
+       
     }
 }

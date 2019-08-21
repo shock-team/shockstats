@@ -9,6 +9,24 @@ namespace Shock1
 {
     public class Mod1
     {
+        public float getK(DataTable dt)
+        {
+            float aux = 1f + 3.3f * (float)Math.Log10(getN(dt));
+            return aux;
+        }
+
+        public float getAmplitud(DataTable dt)
+        {
+            return (float)Math.Round(getRango(dt) / getK(dt));
+        }
+
+      /*  public float getModa(DataTable dt)
+        {
+            float Fmax = getFmax(dt);
+
+            return aux;
+        }
+        */
 
         public float getMedia(DataTable dt)
         {
@@ -27,6 +45,19 @@ namespace Shock1
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 aux += dt.Rows[i].Field<float>("Fi");
+            }
+            return aux;
+        }
+
+        public float getFmax(DataTable dt)
+        {
+            float aux = dt.Rows[0].Field<float>("Fi");
+            for (int i = 1; i < dt.Rows.Count; i++)
+            {
+                if (aux > dt.Rows[i].Field<float>("Fi"))
+                {
+                    aux = dt.Rows[i].Field<float>("Fi");
+                }
             }
             return aux;
         }
@@ -85,6 +116,8 @@ namespace Shock1
         }
 
 
+
+
         public void actualizarFk(DataTable dt, DataGridView dgv)
         {
             float aux = 0;
@@ -95,6 +128,27 @@ namespace Shock1
             }
         }
 
-        
+        public void actualizarFrp(DataTable dt, DataGridView dgv)
+        {
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dgv.Rows[i].Cells["Frp"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fi") / getN(dt))) / 10;
+                if (dt.Rows.Count != 0 && dt.Columns.Contains("Fk"))
+                {
+                    if (!dt.Columns.Contains("Fkrp"))
+                    {
+                        dt.Columns.Add(new DataColumn("Fkrp", typeof(float)));
+                        dgv.Rows[i].Cells["Fkrp"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fk") / getN(dt))) / 10;
+                    }
+                    else
+                    {
+                        dgv.Rows[i].Cells["Fkrp"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fk") / getN(dt))) / 10;
+                    }
+                    
+                }
+            }
+        }
+
     }
 }
