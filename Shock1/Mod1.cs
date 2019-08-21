@@ -79,6 +79,10 @@ namespace Shock1
             return aux / getN(dt);
         } 
 
+        public float getDesvioEstandar(DataTable dt)
+        {
+            return (float)Math.Sqrt(getVarianza(dt));
+        }
 
         public void actualizarFk(DataTable dt, DataGridView dgv)
         {
