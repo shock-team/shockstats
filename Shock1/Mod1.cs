@@ -180,6 +180,13 @@ namespace Shock1
             return LRI + getAmplitud(dt) * (posicion - sumatoriaFrecuenciasAnteriores) / dt.Rows[posicionFrecuencia].Field<float>("Fi");
         }
 
+        public float getMi(float LRI, float LRS)
+        {
+            return (LRI + LRS) / 2;
+        }
+
+
+
         public void actualizarFrp(DataTable dt, DataGridView dgv)
         {
 

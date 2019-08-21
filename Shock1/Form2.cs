@@ -75,16 +75,22 @@ namespace Shock1
         {
             if (txtFi.Text != "" && txtXi.Text != "")
             {
-                dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
                 dataGV.DataSource = dt;
+                if (rbContinuo.Checked)
+                {
+                    rbDiscreto.Enabled = false;
+                    dt.Rows.Add(objMod1.getMi(float.Parse(txtXi.Text),float.Parse(txtXi2.Text)), Math.Abs(float.Parse(txtFi.Text)));
+                }
+                else
+                {
+                    rbContinuo.Enabled = false;
+                    dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
+                }
                 refreshDatos();
                 refreshTabla();
-
-
-
                 txtFi.Text = "";
                 txtXi.Text = "";
-
+                txtXi2.Text = "";
                 ActiveControl = txtXi;
                 txtXi.Focus();
                 //txtXi.Select();
@@ -103,6 +109,8 @@ namespace Shock1
             dataGV.Refresh();
             lblN.Text = 0.ToString();
             lblMedia.Text = 0.ToString();
+            rbContinuo.Enabled = true;
+            rbDiscreto.Enabled = true;
         }
 
         private void CbAcumulada_CheckedChanged(object sender, EventArgs e)
