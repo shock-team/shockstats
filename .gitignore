@@ -1,7 +1,6 @@
 
-.vs/ShockStats/v16/.suo
+.vs/*.*
 *.ide-shm
 *.cache
 *.ide-wal
-.vs/ShockStats/v16/.suo
-*.cache
+
