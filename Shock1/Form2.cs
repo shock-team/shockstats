@@ -74,7 +74,6 @@ namespace Shock1
         {
             if (txtFi.Text != "" && txtXi.Text != "")
             {
-                dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
                 dataGV.DataSource = dt;
                
                  if (rbContinuo.Checked)
