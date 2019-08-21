@@ -49,6 +49,8 @@
             this.txtXi2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lblDash = new MaterialSkin.Controls.MaterialLabel();
             this.btnDelete = new MaterialSkin.Controls.MaterialFlatButton();
+            this.lblLRI = new MaterialSkin.Controls.MaterialLabel();
+            this.lblLRS = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -345,9 +347,39 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
+            // lblLRI
+            // 
+            this.lblLRI.AutoSize = true;
+            this.lblLRI.Depth = 0;
+            this.lblLRI.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblLRI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblLRI.Location = new System.Drawing.Point(516, 151);
+            this.lblLRI.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblLRI.Name = "lblLRI";
+            this.lblLRI.Size = new System.Drawing.Size(30, 19);
+            this.lblLRI.TabIndex = 22;
+            this.lblLRI.Text = "LRI";
+            this.lblLRI.Visible = false;
+            // 
+            // lblLRS
+            // 
+            this.lblLRS.AutoSize = true;
+            this.lblLRS.Depth = 0;
+            this.lblLRS.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblLRS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblLRS.Location = new System.Drawing.Point(653, 151);
+            this.lblLRS.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblLRS.Name = "lblLRS";
+            this.lblLRS.Size = new System.Drawing.Size(35, 19);
+            this.lblLRS.TabIndex = 23;
+            this.lblLRS.Text = "LRS";
+            this.lblLRS.Visible = false;
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(731, 445);
+            this.Controls.Add(this.lblLRS);
+            this.Controls.Add(this.lblLRI);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblDash);
             this.Controls.Add(this.txtXi2);
@@ -402,5 +434,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtXi2;
         private MaterialSkin.Controls.MaterialLabel lblDash;
         private MaterialSkin.Controls.MaterialFlatButton btnDelete;
+        private MaterialSkin.Controls.MaterialLabel lblLRI;
+        private MaterialSkin.Controls.MaterialLabel lblLRS;
     }
 }

@@ -84,6 +84,7 @@ namespace Shock1
             return (float)Math.Sqrt(getVarianza(dt));
         }
 
+
         public void actualizarFk(DataTable dt, DataGridView dgv)
         {
             float aux = 0;

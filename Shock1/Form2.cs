@@ -140,6 +140,8 @@ namespace Shock1
                 lblDash.Visible = true;
                 txtXi2.Visible = true;
                 lblXi.Visible = false;
+                lblLRI.Visible = true;
+                lblLRS.Visible = true;
             }
         }
 
@@ -152,6 +154,8 @@ namespace Shock1
                 lblDash.Visible = false;
                 txtXi2.Visible = false;
                 lblXi.Visible = true;
+                lblLRI.Visible = false;
+                lblLRS.Visible = false;
             }      
         }
 
