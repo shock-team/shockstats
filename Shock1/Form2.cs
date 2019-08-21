@@ -27,7 +27,6 @@ namespace Shock1
         private void Form1_Load(object sender, EventArgs e)
         {
             AcceptButton = btnInsert;
-            //Controls = btnInsert;
             dt.Columns.AddRange(new DataColumn[2]
             {
                 new DataColumn("Xi", typeof(float)),
@@ -75,8 +74,10 @@ namespace Shock1
         {
             if (txtFi.Text != "" && txtXi.Text != "")
             {
+                dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
                 dataGV.DataSource = dt;
-                if (rbContinuo.Checked)
+               
+                 if (rbContinuo.Checked)
                 {
                     rbDiscreto.Enabled = false;
                     dt.Rows.Add(objMod1.getMi(float.Parse(txtXi.Text),float.Parse(txtXi2.Text)), Math.Abs(float.Parse(txtFi.Text)));
@@ -88,9 +89,13 @@ namespace Shock1
                 }
                 refreshDatos();
                 refreshTabla();
+
+
+
                 txtFi.Text = "";
                 txtXi.Text = "";
                 txtXi2.Text = "";
+
                 ActiveControl = txtXi;
                 txtXi.Focus();
                 //txtXi.Select();

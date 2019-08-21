@@ -430,7 +430,7 @@
             // Form1
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(865, 523);
+            this.ClientSize = new System.Drawing.Size(865, 453);
             this.Controls.Add(this.btnParticiones);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.cbPorcentual);
