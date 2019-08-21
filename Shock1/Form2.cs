@@ -225,6 +225,10 @@ namespace Shock1
             
         }
 
-       
+        private void BtnTest_Click(object sender, EventArgs e)
+        {
+            float[] arre = objMod1.getModa(dt);
+            MessageBox.Show(arre.ToString());
+        }
     }
 }
