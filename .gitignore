@@ -1,6 +1,9 @@
 
-.vs/*.*
+bin/
+.vs/*
 *.ide-shm
 *.cache
 *.ide-wal
+
+
 
