@@ -48,6 +48,7 @@
             this.rbDiscreto = new MaterialSkin.Controls.MaterialRadioButton();
             this.txtXi2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lblDash = new MaterialSkin.Controls.MaterialLabel();
+            this.btnDelete = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             this.dataGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGV.Location = new System.Drawing.Point(12, 73);
             this.dataGV.Name = "dataGV";
-            this.dataGV.Size = new System.Drawing.Size(383, 330);
+            this.dataGV.Size = new System.Drawing.Size(424, 330);
             this.dataGV.TabIndex = 0;
             // 
             // lblXi
@@ -65,7 +66,7 @@
             this.lblXi.Depth = 0;
             this.lblXi.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblXi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblXi.Location = new System.Drawing.Point(402, 173);
+            this.lblXi.Location = new System.Drawing.Point(442, 173);
             this.lblXi.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblXi.Name = "lblXi";
             this.lblXi.Size = new System.Drawing.Size(26, 19);
@@ -78,7 +79,7 @@
             this.lblFi.Depth = 0;
             this.lblFi.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblFi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFi.Location = new System.Drawing.Point(403, 202);
+            this.lblFi.Location = new System.Drawing.Point(443, 202);
             this.lblFi.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblFi.Name = "lblFi";
             this.lblFi.Size = new System.Drawing.Size(25, 19);
@@ -90,7 +91,7 @@
             this.btnInsert.AutoSize = true;
             this.btnInsert.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnInsert.Depth = 0;
-            this.btnInsert.Location = new System.Drawing.Point(430, 242);
+            this.btnInsert.Location = new System.Drawing.Point(470, 242);
             this.btnInsert.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnInsert.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnInsert.Name = "btnInsert";
@@ -105,7 +106,7 @@
             // 
             this.txtXi.Depth = 0;
             this.txtXi.Hint = "";
-            this.txtXi.Location = new System.Drawing.Point(435, 173);
+            this.txtXi.Location = new System.Drawing.Point(475, 173);
             this.txtXi.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtXi.Name = "txtXi";
             this.txtXi.PasswordChar = '\0';
@@ -113,14 +114,15 @@
             this.txtXi.SelectionLength = 0;
             this.txtXi.SelectionStart = 0;
             this.txtXi.Size = new System.Drawing.Size(113, 23);
-            this.txtXi.TabIndex = 4;
+            this.txtXi.TabIndex = 1;
+            this.txtXi.TabStop = false;
             this.txtXi.UseSystemPasswordChar = false;
             // 
             // txtFi
             // 
             this.txtFi.Depth = 0;
             this.txtFi.Hint = "";
-            this.txtFi.Location = new System.Drawing.Point(434, 202);
+            this.txtFi.Location = new System.Drawing.Point(474, 202);
             this.txtFi.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtFi.Name = "txtFi";
             this.txtFi.PasswordChar = '\0';
@@ -128,7 +130,8 @@
             this.txtFi.SelectionLength = 0;
             this.txtFi.SelectionStart = 0;
             this.txtFi.Size = new System.Drawing.Size(113, 23);
-            this.txtFi.TabIndex = 4;
+            this.txtFi.TabIndex = 2;
+            this.txtFi.TabStop = false;
             this.txtFi.UseSystemPasswordChar = false;
             // 
             // btnClear
@@ -136,13 +139,13 @@
             this.btnClear.AutoSize = true;
             this.btnClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnClear.Depth = 0;
-            this.btnClear.Location = new System.Drawing.Point(406, 367);
+            this.btnClear.Location = new System.Drawing.Point(446, 367);
             this.btnClear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnClear.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnClear.Name = "btnClear";
             this.btnClear.Primary = false;
             this.btnClear.Size = new System.Drawing.Size(66, 36);
-            this.btnClear.TabIndex = 5;
+            this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Limpiar";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click_1);
@@ -152,14 +155,14 @@
             this.cbAcumulada.AutoSize = true;
             this.cbAcumulada.Depth = 0;
             this.cbAcumulada.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbAcumulada.Location = new System.Drawing.Point(406, 327);
+            this.cbAcumulada.Location = new System.Drawing.Point(446, 327);
             this.cbAcumulada.Margin = new System.Windows.Forms.Padding(0);
             this.cbAcumulada.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbAcumulada.MouseState = MaterialSkin.MouseState.HOVER;
             this.cbAcumulada.Name = "cbAcumulada";
             this.cbAcumulada.Ripple = true;
             this.cbAcumulada.Size = new System.Drawing.Size(100, 30);
-            this.cbAcumulada.TabIndex = 6;
+            this.cbAcumulada.TabIndex = 4;
             this.cbAcumulada.Text = "Acumulada";
             this.cbAcumulada.UseVisualStyleBackColor = true;
             this.cbAcumulada.CheckedChanged += new System.EventHandler(this.CbAcumulada_CheckedChanged);
@@ -169,14 +172,14 @@
             this.cbRelativa.AutoSize = true;
             this.cbRelativa.Depth = 0;
             this.cbRelativa.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbRelativa.Location = new System.Drawing.Point(506, 327);
+            this.cbRelativa.Location = new System.Drawing.Point(546, 327);
             this.cbRelativa.Margin = new System.Windows.Forms.Padding(0);
             this.cbRelativa.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbRelativa.MouseState = MaterialSkin.MouseState.HOVER;
             this.cbRelativa.Name = "cbRelativa";
             this.cbRelativa.Ripple = true;
             this.cbRelativa.Size = new System.Drawing.Size(79, 30);
-            this.cbRelativa.TabIndex = 7;
+            this.cbRelativa.TabIndex = 5;
             this.cbRelativa.Text = "Relativa";
             this.cbRelativa.UseVisualStyleBackColor = true;
             this.cbRelativa.CheckedChanged += new System.EventHandler(this.CbRelativa_CheckedChanged);
@@ -187,7 +190,7 @@
             this.lblTest.Depth = 0;
             this.lblTest.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTest.Location = new System.Drawing.Point(431, 250);
+            this.lblTest.Location = new System.Drawing.Point(471, 250);
             this.lblTest.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTest.Name = "lblTest";
             this.lblTest.Size = new System.Drawing.Size(0, 19);
@@ -248,13 +251,13 @@
             this.btnExit.AutoSize = true;
             this.btnExit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnExit.Depth = 0;
-            this.btnExit.Location = new System.Drawing.Point(635, 367);
+            this.btnExit.Location = new System.Drawing.Point(674, 400);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnExit.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExit.Name = "btnExit";
             this.btnExit.Primary = false;
             this.btnExit.Size = new System.Drawing.Size(49, 36);
-            this.btnExit.TabIndex = 13;
+            this.btnExit.TabIndex = 7;
             this.btnExit.Text = "Salir";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.MaterialFlatButton1_Click);
@@ -264,7 +267,7 @@
             this.rbContinuo.AutoSize = true;
             this.rbContinuo.Depth = 0;
             this.rbContinuo.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rbContinuo.Location = new System.Drawing.Point(506, 73);
+            this.rbContinuo.Location = new System.Drawing.Point(546, 73);
             this.rbContinuo.Margin = new System.Windows.Forms.Padding(0);
             this.rbContinuo.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rbContinuo.MouseState = MaterialSkin.MouseState.HOVER;
@@ -282,7 +285,7 @@
             this.rbDiscreto.Checked = true;
             this.rbDiscreto.Depth = 0;
             this.rbDiscreto.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rbDiscreto.Location = new System.Drawing.Point(406, 73);
+            this.rbDiscreto.Location = new System.Drawing.Point(446, 73);
             this.rbDiscreto.Margin = new System.Windows.Forms.Padding(0);
             this.rbDiscreto.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rbDiscreto.MouseState = MaterialSkin.MouseState.HOVER;
@@ -299,7 +302,7 @@
             // 
             this.txtXi2.Depth = 0;
             this.txtXi2.Hint = "";
-            this.txtXi2.Location = new System.Drawing.Point(572, 173);
+            this.txtXi2.Location = new System.Drawing.Point(612, 173);
             this.txtXi2.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtXi2.Name = "txtXi2";
             this.txtXi2.PasswordChar = '\0';
@@ -307,7 +310,8 @@
             this.txtXi2.SelectionLength = 0;
             this.txtXi2.SelectionStart = 0;
             this.txtXi2.Size = new System.Drawing.Size(111, 23);
-            this.txtXi2.TabIndex = 19;
+            this.txtXi2.TabIndex = 2;
+            this.txtXi2.TabStop = false;
             this.txtXi2.UseSystemPasswordChar = false;
             this.txtXi2.Visible = false;
             // 
@@ -317,7 +321,7 @@
             this.lblDash.Depth = 0;
             this.lblDash.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblDash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblDash.Location = new System.Drawing.Point(554, 175);
+            this.lblDash.Location = new System.Drawing.Point(594, 175);
             this.lblDash.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblDash.Name = "lblDash";
             this.lblDash.Size = new System.Drawing.Size(13, 19);
@@ -325,9 +329,26 @@
             this.lblDash.Text = "-";
             this.lblDash.Visible = false;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.Depth = 0;
+            this.btnDelete.Location = new System.Drawing.Point(565, 242);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Primary = false;
+            this.btnDelete.Size = new System.Drawing.Size(74, 36);
+            this.btnDelete.TabIndex = 21;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(697, 445);
+            this.ClientSize = new System.Drawing.Size(731, 445);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblDash);
             this.Controls.Add(this.txtXi2);
             this.Controls.Add(this.rbDiscreto);
@@ -380,5 +401,6 @@
         private MaterialSkin.Controls.MaterialRadioButton rbDiscreto;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtXi2;
         private MaterialSkin.Controls.MaterialLabel lblDash;
+        private MaterialSkin.Controls.MaterialFlatButton btnDelete;
     }
 }

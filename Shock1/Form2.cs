@@ -2,10 +2,15 @@
 using System.Data;
 using System.Windows.Forms;
 
+
+
 namespace Shock1
 {
     public partial class Form1 : MaterialSkin.Controls.MaterialForm
     {
+        Mod1 objMod1 = new Mod1();
+    
+
 
         //
         // INICIALIZADORES
@@ -32,42 +37,11 @@ namespace Shock1
         //
         //METODOS PUBLICOS
         //
-        public float getN()
+        public void refreshDatos()
         {
-            float aux = 0;
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                aux += dt.Rows[i].Field<float>("Fi");
-            }
-            return aux;
-        }
-
-        public void actualizarFk()
-        {
-            float aux = 0;
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                aux += dt.Rows[i].Field<float>("Fi");
-                dataGV.Rows[i].Cells["Fk"].Value = aux;
-            }
-        }
-
-        public float getMedia()
-        {
-            float aux = 0;
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                aux = dt.Rows[i].Field<float>("Xi") * dt.Rows[i].Field<float>("Fi");
-            }
-            return (float)Math.Truncate(100 * aux / getN()) / 100;
-        }
-
-        public float getRango()
-        {
-            return
-        }
-
-
+            lblN.Text = objMod1.getN(dt).ToString();
+            lblMedia.Text = objMod1.getMedia(dt).ToString();
+        }        
         //
         //VENTANA
         //
@@ -79,11 +53,10 @@ namespace Shock1
             {
                 dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
                 dataGV.DataSource = dt;
-                lblN.Text = getN().ToString();
-                lblMedia.Text = getMedia().ToString();
+                refreshDatos();
                 if (dataGV.Columns.Contains("Fk"))
                 {
-                    actualizarFk();
+                    objMod1.actualizarFk(dt,dataGV);
                 }
 
                 txtFi.Text = "";
@@ -111,7 +84,7 @@ namespace Shock1
                 dt.Columns.Add(new DataColumn("Fk", typeof(float)));
                 if (dt.Rows.Count != 0 && dataGV.Columns.Contains("Fk"))
                 {
-                    actualizarFk();
+                    objMod1.actualizarFk(dt, dataGV);
                 }
             }
             else if (!cbAcumulada.Checked)
@@ -125,16 +98,16 @@ namespace Shock1
         {
             if (cbRelativa.Checked)
             {
-                if (getN() > 0)
+                if (objMod1.getN(dt) > 0)
                 {
                     dt2 = dt.Copy();
                     dataGV.DataSource = dt2;
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        dataGV.Rows[i].Cells["Fi"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fi") / getN())) / 1000;
+                        dataGV.Rows[i].Cells["Fi"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fi") / objMod1.getN(dt))) / 1000;
                         if (dt.Rows.Count != 0 && dataGV.Columns.Contains("Fk"))
                         {
-                            dataGV.Rows[i].Cells["Fk"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fk") / getN())) / 1000;
+                            dataGV.Rows[i].Cells["Fk"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fk") / objMod1.getN(dt))) / 1000;
                         }
                     }
                 }
@@ -170,6 +143,7 @@ namespace Shock1
             }
         }
 
+
         private void RbDiscreto_CheckedChanged(object sender, EventArgs e)
         {
             if (rbDiscreto.Checked)
@@ -179,6 +153,16 @@ namespace Shock1
                 txtXi2.Visible = false;
                 lblXi.Visible = true;
             }      
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in dataGV.SelectedRows)
+            {
+                dataGV.Rows.RemoveAt(item.Index);
+            }
+            dataGV.Refresh();
+            refreshDatos();
         }
     }
 }
