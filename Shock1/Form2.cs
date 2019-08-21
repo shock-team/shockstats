@@ -79,7 +79,8 @@ namespace Shock1
             }
             else
             {
-                MessageBox.Show("Ingrese datos para insertar.");
+                MessageBox.Show("Ingrese datos para insertar.", "Aviso", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Information);
             }
         }
 
@@ -206,13 +207,22 @@ namespace Shock1
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in dataGV.SelectedRows)
+            if (dataGV.SelectedRows.Count > 0)
             {
-                dataGV.Rows.RemoveAt(item.Index);
+                foreach (DataGridViewRow item in dataGV.SelectedRows)
+                {
+                    dataGV.Rows.RemoveAt(item.Index);
+                }
+                dataGV.Refresh();
+                refreshDatos();
+                refreshTabla();
             }
-            dataGV.Refresh();
-            refreshDatos();
-            refreshTabla();
+            else
+            {
+                MessageBox.Show("Seleccione una fila a eliminar", "Aviso", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Information);
+            }
+            
         }
 
        

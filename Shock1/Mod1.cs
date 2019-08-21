@@ -30,13 +30,20 @@ namespace Shock1
 
         public float getMedia(DataTable dt)
         {
-
             float aux = 0;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 aux += dt.Rows[i].Field<float>("Xi") * dt.Rows[i].Field<float>("Fi");
             }
-            return (float)Math.Truncate(100 * aux / getN(dt)) / 100;
+            if (getN(dt) == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return (float)Math.Truncate(100 * aux / getN(dt)) / 100;
+            }
+            
         }
 
         public float getN(DataTable dt)
