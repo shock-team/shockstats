@@ -228,6 +228,7 @@ namespace Shock1
                 dataGV.Refresh();
                 refreshDatos();
                 refreshTabla();
+                
             }
             else
             {
@@ -241,6 +242,13 @@ namespace Shock1
         {
             float[] arre = objMod1.getModa(dt);
             MessageBox.Show(arre[0].ToString());
+        }
+
+        private void BtnParticiones_Click(object sender, EventArgs e)
+        {
+            //Hide();
+            Form3 part = new Form3();
+            part.ShowDialog();
         }
     }
 }

@@ -53,6 +53,7 @@
             this.lblLRS = new MaterialSkin.Controls.MaterialLabel();
             this.cbPorcentual = new MaterialSkin.Controls.MaterialCheckBox();
             this.btnTest = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnParticiones = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -399,7 +400,7 @@
             this.btnTest.AutoSize = true;
             this.btnTest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnTest.Depth = 0;
-            this.btnTest.Location = new System.Drawing.Point(297, 409);
+            this.btnTest.Location = new System.Drawing.Point(499, 409);
             this.btnTest.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnTest.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnTest.Name = "btnTest";
@@ -410,10 +411,27 @@
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.BtnTest_Click);
             // 
+            // btnParticiones
+            // 
+            this.btnParticiones.AutoSize = true;
+            this.btnParticiones.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnParticiones.Depth = 0;
+            this.btnParticiones.Location = new System.Drawing.Point(628, 290);
+            this.btnParticiones.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnParticiones.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnParticiones.Name = "btnParticiones";
+            this.btnParticiones.Primary = false;
+            this.btnParticiones.Size = new System.Drawing.Size(183, 36);
+            this.btnParticiones.TabIndex = 26;
+            this.btnParticiones.Text = "Cálculo de particiones";
+            this.btnParticiones.UseVisualStyleBackColor = true;
+            this.btnParticiones.Click += new System.EventHandler(this.BtnParticiones_Click);
+            // 
             // Form1
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(865, 467);
+            this.ClientSize = new System.Drawing.Size(865, 523);
+            this.Controls.Add(this.btnParticiones);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.cbPorcentual);
             this.Controls.Add(this.lblLRS);
@@ -442,6 +460,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shock!Stats";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGV)).EndInit();
@@ -476,5 +495,6 @@
         private MaterialSkin.Controls.MaterialLabel lblLRS;
         private MaterialSkin.Controls.MaterialCheckBox cbPorcentual;
         private MaterialSkin.Controls.MaterialFlatButton btnTest;
+        private MaterialSkin.Controls.MaterialFlatButton btnParticiones;
     }
 }
