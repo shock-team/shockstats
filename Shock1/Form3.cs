@@ -23,10 +23,6 @@ namespace Shock1
             ActiveControl = txtCuartil;
         }
 
-        private void MaterialFlatButton1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
