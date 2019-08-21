@@ -20,13 +20,17 @@ namespace Shock1
             return (float)Math.Round(getRango(dt) / getK(dt));
         }
 
-      /*  public float getModa(DataTable dt)
+        public float[] getModa(DataTable dt)
         {
             float Fmax = getFmax(dt);
-
-            return aux;
+            var listaDeModa = new List<float>();
+            DataRow[] listaDeFilasDeModa = dt.Select("Fi = Fmax");
+            for (int i = 0; i < listaDeFilasDeModa.Length; i++)
+            {
+                listaDeModa.Add(listaDeFilasDeModa[i].Field<float>("Xi"));
+            }
+            return listaDeModa.ToArray();
         }
-        */
 
         public float getMedia(DataTable dt)
         {
@@ -122,7 +126,27 @@ namespace Shock1
             return (float)Math.Sqrt(getVarianza(dt));
         }
 
+        public float getCoeficienteDePearson(DataTable dt)
+        {
+            float coeficiente = 0;
+            float[] modas = getModa(dt);
+            if (modas.Length == 1)
+            {
+                coeficiente = (getMedia(dt) - modas[0]) / getDesvioEstandar(dt);
+            }
+            return coeficiente;
+        }
 
+        public float getCoeficienteDeFisher(DataTable dt)
+        {
+            float coeficiente = 0;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                coeficiente += (float)Math.Pow(getDesvio(dt, dt.Rows[i].Field<float>("Xi")), 3) *
+                                   dt.Rows[i].Field<float>("Fi");
+            }
+            return (coeficiente/getN(dt))/(float)Math.Pow(getDesvioEstandar(dt),3);
+        }
 
 
         public void actualizarFk(DataTable dt, DataGridView dgv)
@@ -133,6 +157,25 @@ namespace Shock1
                 aux += dt.Rows[i].Field<float>("Fi");
                 dgv.Rows[i].Cells["Fk"].Value = aux;
             }
+        }
+
+        public float getPosicion(byte i, byte cantidad, DataTable dt)
+        {
+            return i * getN(dt) / cantidad;
+        }
+
+        public float getLimite(byte i, byte cantidad, DataTable dt)
+        {
+            float LRI = 0; //De momento, para que quede la fórmula a mano. Después hay que cambiarlo por getLRI()
+            byte posicionFrecuencia = 0;
+            float posicion = getPosicion(i, cantidad, dt);
+            float sumatoriaFrecuenciasAnteriores = 0;
+            while (posicionFrecuencia <= dt.Rows.Count && dt.Rows[i].Field<float>("Fk") < posicion)
+            {
+                sumatoriaFrecuenciasAnteriores += dt.Rows[i].Field<float>("Fi");
+                posicionFrecuencia++;
+            }
+            return LRI + getAmplitud(dt) * (posicion - sumatoriaFrecuenciasAnteriores) / dt.Rows[posicionFrecuencia].Field<float>("Fi");
         }
 
         public void actualizarFrp(DataTable dt, DataGridView dgv)
