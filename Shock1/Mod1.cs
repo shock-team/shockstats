@@ -24,10 +24,12 @@ namespace Shock1
         {
             float Fmax = getFmax(dt);
             var listaDeModa = new List<float>();
-            DataRow[] listaDeFilasDeModa = dt.Select("Fi = Fmax");
-            for (int i = 0; i < listaDeFilasDeModa.Length; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                listaDeModa.Add(listaDeFilasDeModa[i].Field<float>("Xi"));
+                if (dt.Rows[i].Field<float>("Fi") == Fmax)
+                {
+                    listaDeModa.Add(dt.Rows[i].Field<float>("Xi"));
+                }
             }
             return listaDeModa.ToArray();
         }
@@ -65,7 +67,7 @@ namespace Shock1
             float aux = dt.Rows[0].Field<float>("Fi");
             for (int i = 1; i < dt.Rows.Count; i++)
             {
-                if (aux > dt.Rows[i].Field<float>("Fi"))
+                if (aux < dt.Rows[i].Field<float>("Fi"))
                 {
                     aux = dt.Rows[i].Field<float>("Fi");
                 }
@@ -78,7 +80,7 @@ namespace Shock1
             float aux = dt.Rows[0].Field<float>("Xi");
             for (int i = 1; i < dt.Rows.Count; i++)
             {
-                if (aux > dt.Rows[i].Field<float>("Xi"))
+                if (aux < dt.Rows[i].Field<float>("Xi"))
                 {
                     aux = dt.Rows[i].Field<float>("Xi");
                 }
@@ -91,7 +93,7 @@ namespace Shock1
             float aux = dt.Rows[0].Field<float>("Xi");
             for (int i = 1; i < dt.Rows.Count; i++)
             {
-                if (aux < dt.Rows[i].Field<float>("Xi"))
+                if (aux > dt.Rows[i].Field<float>("Xi"))
                 {
                     aux = dt.Rows[i].Field<float>("Xi");
                 }
