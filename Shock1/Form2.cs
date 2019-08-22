@@ -42,7 +42,10 @@ namespace Shock1
         public void refreshDatos()
         {
             lblN.Text = objMod1.getN(dt).ToString();
-            lblMedia.Text = objMod1.getMedia(dt).ToString();
+            lblMedia.Text = (Math.Truncate(100f *objMod1.getMedia(dt)) / 100f).ToString();
+            lblFisher.Text = (Math.Truncate(100f * objMod1.getCoeficienteDeFisher(dt))/100f).ToString();
+            lblPearson.Text = (Math.Truncate(100f * objMod1.getCoeficienteDePearson(dt)) / 100f).ToString();
+
         }        
 
         public void refreshTabla()
@@ -109,10 +112,8 @@ namespace Shock1
         private void BtnClear_Click_1(object sender, EventArgs e)
         {
             dt.Rows.Clear();
-            dataGV.DataSource = dt;
-            dataGV.Refresh();
-            lblN.Text = 0.ToString();
-            lblMedia.Text = 0.ToString();
+            dataGV.DataSource = dt; 
+            refreshDatos();
             rbContinuo.Enabled = true;
             rbDiscreto.Enabled = true;
         }

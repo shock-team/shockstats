@@ -47,7 +47,7 @@ namespace Shock1
             }
             else
             {
-                return (float)Math.Truncate(100 * aux / getN(dt)) / 100;
+                return aux / getN(dt);
             }
            
         }
@@ -147,7 +147,8 @@ namespace Shock1
                 coeficiente += (float)Math.Pow(getDesvio(dt, dt.Rows[i].Field<float>("Xi")), 3) *
                                    dt.Rows[i].Field<float>("Fi");
             }
-            return (coeficiente/getN(dt))/(float)Math.Pow(getDesvioEstandar(dt),3);
+            float aux = (coeficiente / getN(dt)) / (float)Math.Pow(getDesvioEstandar(dt), 3);
+            return aux;
         }
 
 
@@ -165,6 +166,20 @@ namespace Shock1
         {
             return i * getN(dt) / cantidad;
         }
+        /*
+        public float getLRI(byte i, byte cantidad, DataTable dt)
+        {
+            int c = (int)Math.Round(getAmplitud(dt));
+            int posFrec = 0;
+            float pos = getPosicion(i, cantidad, dt);
+            for (int j = 0; j < dt.Rows.Count; j++)
+            {
+                
+            }
+            
+
+
+        }*/
 
         public float getLimite(byte i, byte cantidad, DataTable dt)
         {
@@ -172,7 +187,7 @@ namespace Shock1
             byte posicionFrecuencia = 0;
             float posicion = getPosicion(i, cantidad, dt);
             float sumatoriaFrecuenciasAnteriores = 0;
-            while (posicionFrecuencia <= dt.Rows.Count && dt.Rows[i].Field<float>("Fk") < posicion)
+            while (posicionFrecuencia < dt.Rows.Count && dt.Rows[i].Field<float>("Fk") < posicion)
             {
                 sumatoriaFrecuenciasAnteriores += dt.Rows[i].Field<float>("Fi");
                 posicionFrecuencia++;

@@ -54,6 +54,10 @@
             this.cbPorcentual = new MaterialSkin.Controls.MaterialCheckBox();
             this.btnTest = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnParticiones = new MaterialSkin.Controls.MaterialFlatButton();
+            this.lblF = new MaterialSkin.Controls.MaterialLabel();
+            this.lblFisher = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblPearson = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -359,9 +363,9 @@
             this.lblLRI.Location = new System.Drawing.Point(637, 151);
             this.lblLRI.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblLRI.Name = "lblLRI";
-            this.lblLRI.Size = new System.Drawing.Size(30, 19);
+            this.lblLRI.Size = new System.Drawing.Size(34, 19);
             this.lblLRI.TabIndex = 22;
-            this.lblLRI.Text = "LRI";
+            this.lblLRI.Text = "LRI:";
             this.lblLRI.Visible = false;
             // 
             // lblLRS
@@ -373,9 +377,9 @@
             this.lblLRS.Location = new System.Drawing.Point(774, 151);
             this.lblLRS.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblLRS.Name = "lblLRS";
-            this.lblLRS.Size = new System.Drawing.Size(35, 19);
+            this.lblLRS.Size = new System.Drawing.Size(39, 19);
             this.lblLRS.TabIndex = 23;
-            this.lblLRS.Text = "LRS";
+            this.lblLRS.Text = "LRS:";
             this.lblLRS.Visible = false;
             // 
             // cbPorcentual
@@ -427,10 +431,64 @@
             this.btnParticiones.UseVisualStyleBackColor = true;
             this.btnParticiones.Click += new System.EventHandler(this.BtnParticiones_Click);
             // 
+            // lblF
+            // 
+            this.lblF.AutoSize = true;
+            this.lblF.Depth = 0;
+            this.lblF.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblF.Location = new System.Drawing.Point(189, 417);
+            this.lblF.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblF.Name = "lblF";
+            this.lblF.Size = new System.Drawing.Size(54, 19);
+            this.lblF.TabIndex = 27;
+            this.lblF.Text = "Fisher:";
+            // 
+            // lblFisher
+            // 
+            this.lblFisher.AutoSize = true;
+            this.lblFisher.Depth = 0;
+            this.lblFisher.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblFisher.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblFisher.Location = new System.Drawing.Point(237, 417);
+            this.lblFisher.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblFisher.Name = "lblFisher";
+            this.lblFisher.Size = new System.Drawing.Size(0, 19);
+            this.lblFisher.TabIndex = 28;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(295, 417);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(68, 19);
+            this.materialLabel1.TabIndex = 29;
+            this.materialLabel1.Text = "Pearson:";
+            // 
+            // lblPearson
+            // 
+            this.lblPearson.AutoSize = true;
+            this.lblPearson.Depth = 0;
+            this.lblPearson.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblPearson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblPearson.Location = new System.Drawing.Point(360, 417);
+            this.lblPearson.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPearson.Name = "lblPearson";
+            this.lblPearson.Size = new System.Drawing.Size(0, 19);
+            this.lblPearson.TabIndex = 30;
+            // 
             // Form1
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(865, 453);
+            this.Controls.Add(this.lblPearson);
+            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.lblFisher);
+            this.Controls.Add(this.lblF);
             this.Controls.Add(this.btnParticiones);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.cbPorcentual);
@@ -496,5 +554,9 @@
         private MaterialSkin.Controls.MaterialCheckBox cbPorcentual;
         private MaterialSkin.Controls.MaterialFlatButton btnTest;
         private MaterialSkin.Controls.MaterialFlatButton btnParticiones;
+        private MaterialSkin.Controls.MaterialLabel lblF;
+        private MaterialSkin.Controls.MaterialLabel lblFisher;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel lblPearson;
     }
 }
