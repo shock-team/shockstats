@@ -87,9 +87,9 @@ namespace Shock1
                     rbContinuo.Enabled = false;
                     dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
                 }
-
-                refreshDatos();
                 refreshTabla();
+                refreshDatos();
+               
 
 
 
@@ -213,8 +213,9 @@ namespace Shock1
                     dataGV.Rows.RemoveAt(item.Index);
                 }
                 dataGV.Refresh();
-                refreshDatos();
                 refreshTabla();
+                refreshDatos();
+                
 
             }
             else
