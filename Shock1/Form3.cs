@@ -30,7 +30,7 @@ namespace Shock1
         private void BtnCalcular_Click(object sender, EventArgs e)
         { 
             float lim = objMod1.getLimite(byte.Parse(txtCuartil.Text), 4, Form1.dt);
-            MessageBox.Show(objMod1.getAmplitud(Form1.dt).ToString());
+            MessageBox.Show("Cuartil: "+lim.ToString());
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)

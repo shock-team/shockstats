@@ -198,13 +198,21 @@ namespace Shock1
             byte posicionFrecuencia = 0;
             float posicion = getPosicion(i, cantidad, dt);
             float sumatoriaFrecuenciasAnteriores = 0;
-            while (posicionFrecuencia < dt.Rows.Count && dt.Rows[i].Field<float>("Fk") < posicion)
+            while (posicionFrecuencia < dt.Rows.Count && dt.Rows[posicionFrecuencia].Field<float>("Fk") < posicion)
             {
-                sumatoriaFrecuenciasAnteriores += dt.Rows[i].Field<float>("Fi");
+                sumatoriaFrecuenciasAnteriores += dt.Rows[posicionFrecuencia].Field<float>("Fi");
                 posicionFrecuencia++;
             }
-            return LRI + ( getAmplitud(dt) * (posicion - sumatoriaFrecuenciasAnteriores) ) / dt.Rows[posicionFrecuencia].Field<float>("Fi");
+            float numerador = (posicion - sumatoriaFrecuenciasAnteriores) * getAmplitud(dt);
+            float denominador = dt.Rows[posicionFrecuencia].Field<float>("Fi");
+
+            /*MessageBox.Show("LRI: " + LRI.ToString());
+            MessageBox.Show("numerador: " + numerador.ToString());
+            MessageBox.Show("denominador: " + denominador.ToString());*/
+
+            return LRI + (numerador / denominador);
         }
+
 
         public float getMi(float LRI, float LRS)
         {
