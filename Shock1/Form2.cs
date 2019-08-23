@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
 
 
 
 namespace Shock1
 {
-    public partial class Form1 : MaterialSkin.Controls.MaterialForm
+    public partial class Form1 : MaterialForm
     {
         //
         // INICIALIZADORES
@@ -23,13 +25,16 @@ namespace Shock1
         private void Form1_Load(object sender, EventArgs e)
         {
             AcceptButton = btnInsert;
-            dt.Columns.AddRange(new DataColumn[2]
+            dt.Columns.AddRange(new DataColumn[3]
             {
                 new DataColumn("Xi", typeof(float)),
-                new DataColumn("Fi", typeof(float))
+                new DataColumn("Fi", typeof(float)),
+                new DataColumn("Fk", typeof(float))
             });
-            lblN.Text = 0.ToString();
-            txtXi.Focus();
+
+            txtXi.KeyPress +=(txtEntrada_Changed);
+            txtXi2.KeyPress += (txtEntrada_Changed);
+            txtFi.KeyPress += (txtEntrada_Changed);
         }
 
         //
@@ -39,7 +44,7 @@ namespace Shock1
         {
             lblN.Text = objMod1.getN(dt).ToString();
             lblMedia.Text = (Math.Truncate(100f * objMod1.getMedia(dt)) / 100f).ToString();
-            
+            lblMediana.Text = (Math.Truncate(100f * objMod1.getMediana(dt)) / 100f).ToString();
             lblFisher.Text = (Math.Truncate(100f * objMod1.getCoeficienteDeFisher(dt)) / 100f).ToString();
             lblPearson.Text = (Math.Truncate(100f * objMod1.getCoeficienteDePearson(dt)) / 100f).ToString();
 
@@ -47,10 +52,7 @@ namespace Shock1
 
         public void refreshTabla()
         {
-            if (dataGV.Columns.Contains("Fk"))
-            {
-                objMod1.actualizarFk(dt, dataGV);
-            }
+            objMod1.actualizarFk(dt, dataGV);
             if (dataGV.Columns.Contains("Frp"))
             {
                 objMod1.actualizarFrp(dt, dataGV);
@@ -60,14 +62,13 @@ namespace Shock1
         //VENTANA
         //
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void txtEntrada_Changed(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                btnInsert.PerformClick();
-                e.SuppressKeyPress = true;
                 e.Handled = true;
             }
+
         }
 
         private void BtnInsert_Click(object sender, EventArgs e)
@@ -98,7 +99,7 @@ namespace Shock1
 
                 ActiveControl = txtXi;
                 txtXi.Focus();
-                //txtXi.Select();
+    
             }
             else
             {
@@ -114,34 +115,6 @@ namespace Shock1
             refreshDatos();
             rbContinuo.Enabled = true;
             rbDiscreto.Enabled = true;
-        }
-
-        private void CbAcumulada_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbAcumulada.Checked)
-            {
-                if (!dt.Columns.Contains("Fk"))
-                {
-                    dt.Columns.Add(new DataColumn("Fk", typeof(float)));
-                }
-                if (dt.Rows.Count != 0 && dt.Columns.Contains("Fk"))
-                {
-                    objMod1.actualizarFk(dt, dataGV);
-                }
-
-                if (cbPorcentual.Checked)
-                {
-                    objMod1.actualizarFrp(dt, dataGV);
-                }
-            }
-            else if (!cbAcumulada.Checked)
-            {
-                dt.Columns.Remove("Fk");
-                if (dt.Columns.Contains("Fkrp"))
-                {
-                    dt.Columns.Remove("Fkrp");
-                }
-            }
         }
 
         private void CbPorcentual_CheckedChanged(object sender, EventArgs e)
@@ -177,7 +150,7 @@ namespace Shock1
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         dataGV.Rows[i].Cells["Fi"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fi") / objMod1.getN(dt))) / 1000;
-                        if (dt2.Rows.Count != 0 && dt2.Columns.Contains("Fk"))
+                        if (dt2.Rows.Count != 0)
                         {
                             dataGV.Rows[i].Cells["Fk"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fk") / objMod1.getN(dt))) / 1000;
                         }
@@ -260,16 +233,6 @@ namespace Shock1
 
         private void BtnParticiones_Click(object sender, EventArgs e)
         {
-            if (!cbAcumulada.Checked)
-            {
-                dt.Columns.Add(new DataColumn("Fk", typeof(float)));
-                if (dt.Rows.Count != 0 && dt.Columns.Contains("Fk"))
-                {
-                    objMod1.actualizarFk(dt, dataGV);
-                }
-                cbAcumulada.Checked = true;
-            }
-
             Form3 part = new Form3();
             part.ShowDialog();
         }

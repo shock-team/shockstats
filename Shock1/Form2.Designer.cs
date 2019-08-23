@@ -36,7 +36,6 @@
             this.txtXi = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtFi = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnClear = new MaterialSkin.Controls.MaterialFlatButton();
-            this.cbAcumulada = new MaterialSkin.Controls.MaterialCheckBox();
             this.cbRelativa = new MaterialSkin.Controls.MaterialCheckBox();
             this.lblTest = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -58,6 +57,8 @@
             this.lblFisher = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.lblPearson = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblMediana = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,7 +149,7 @@
             this.btnClear.AutoSize = true;
             this.btnClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnClear.Depth = 0;
-            this.btnClear.Location = new System.Drawing.Point(568, 409);
+            this.btnClear.Location = new System.Drawing.Point(493, 412);
             this.btnClear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnClear.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnClear.Name = "btnClear";
@@ -159,29 +160,12 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click_1);
             // 
-            // cbAcumulada
-            // 
-            this.cbAcumulada.AutoSize = true;
-            this.cbAcumulada.Depth = 0;
-            this.cbAcumulada.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbAcumulada.Location = new System.Drawing.Point(562, 373);
-            this.cbAcumulada.Margin = new System.Windows.Forms.Padding(0);
-            this.cbAcumulada.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cbAcumulada.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cbAcumulada.Name = "cbAcumulada";
-            this.cbAcumulada.Ripple = true;
-            this.cbAcumulada.Size = new System.Drawing.Size(100, 30);
-            this.cbAcumulada.TabIndex = 4;
-            this.cbAcumulada.Text = "Acumulada";
-            this.cbAcumulada.UseVisualStyleBackColor = true;
-            this.cbAcumulada.CheckedChanged += new System.EventHandler(this.CbAcumulada_CheckedChanged);
-            // 
             // cbRelativa
             // 
             this.cbRelativa.AutoSize = true;
             this.cbRelativa.Depth = 0;
             this.cbRelativa.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbRelativa.Location = new System.Drawing.Point(759, 373);
+            this.cbRelativa.Location = new System.Drawing.Point(730, 373);
             this.cbRelativa.Margin = new System.Windows.Forms.Padding(0);
             this.cbRelativa.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbRelativa.MouseState = MaterialSkin.MouseState.HOVER;
@@ -224,7 +208,7 @@
             this.lblN.Depth = 0;
             this.lblN.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblN.Location = new System.Drawing.Point(37, 417);
+            this.lblN.Location = new System.Drawing.Point(66, 417);
             this.lblN.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblN.Name = "lblN";
             this.lblN.Size = new System.Drawing.Size(0, 19);
@@ -236,7 +220,7 @@
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(85, 417);
+            this.materialLabel4.Location = new System.Drawing.Point(137, 417);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(54, 19);
@@ -249,7 +233,7 @@
             this.lblMedia.Depth = 0;
             this.lblMedia.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblMedia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblMedia.Location = new System.Drawing.Point(139, 417);
+            this.lblMedia.Location = new System.Drawing.Point(207, 417);
             this.lblMedia.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblMedia.Name = "lblMedia";
             this.lblMedia.Size = new System.Drawing.Size(0, 19);
@@ -260,7 +244,7 @@
             this.btnExit.AutoSize = true;
             this.btnExit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnExit.Depth = 0;
-            this.btnExit.Location = new System.Drawing.Point(789, 409);
+            this.btnExit.Location = new System.Drawing.Point(795, 424);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnExit.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExit.Name = "btnExit";
@@ -387,7 +371,7 @@
             this.cbPorcentual.AutoSize = true;
             this.cbPorcentual.Depth = 0;
             this.cbPorcentual.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbPorcentual.Location = new System.Drawing.Point(662, 373);
+            this.cbPorcentual.Location = new System.Drawing.Point(633, 373);
             this.cbPorcentual.Margin = new System.Windows.Forms.Padding(0);
             this.cbPorcentual.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbPorcentual.MouseState = MaterialSkin.MouseState.HOVER;
@@ -404,7 +388,7 @@
             this.btnTest.AutoSize = true;
             this.btnTest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnTest.Depth = 0;
-            this.btnTest.Location = new System.Drawing.Point(499, 409);
+            this.btnTest.Location = new System.Drawing.Point(742, 424);
             this.btnTest.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnTest.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnTest.Name = "btnTest";
@@ -420,7 +404,7 @@
             this.btnParticiones.AutoSize = true;
             this.btnParticiones.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnParticiones.Depth = 0;
-            this.btnParticiones.Location = new System.Drawing.Point(628, 290);
+            this.btnParticiones.Location = new System.Drawing.Point(630, 290);
             this.btnParticiones.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnParticiones.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnParticiones.Name = "btnParticiones";
@@ -437,7 +421,7 @@
             this.lblF.Depth = 0;
             this.lblF.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblF.Location = new System.Drawing.Point(189, 417);
+            this.lblF.Location = new System.Drawing.Point(307, 447);
             this.lblF.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblF.Name = "lblF";
             this.lblF.Size = new System.Drawing.Size(54, 19);
@@ -450,7 +434,7 @@
             this.lblFisher.Depth = 0;
             this.lblFisher.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblFisher.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFisher.Location = new System.Drawing.Point(237, 417);
+            this.lblFisher.Location = new System.Drawing.Point(375, 447);
             this.lblFisher.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblFisher.Name = "lblFisher";
             this.lblFisher.Size = new System.Drawing.Size(0, 19);
@@ -462,7 +446,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(295, 417);
+            this.materialLabel1.Location = new System.Drawing.Point(307, 417);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(68, 19);
@@ -475,16 +459,43 @@
             this.lblPearson.Depth = 0;
             this.lblPearson.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblPearson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblPearson.Location = new System.Drawing.Point(360, 417);
+            this.lblPearson.Location = new System.Drawing.Point(372, 417);
             this.lblPearson.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblPearson.Name = "lblPearson";
             this.lblPearson.Size = new System.Drawing.Size(0, 19);
             this.lblPearson.TabIndex = 30;
             // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(137, 447);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(70, 19);
+            this.materialLabel2.TabIndex = 31;
+            this.materialLabel2.Text = "Mediana:";
+            // 
+            // lblMediana
+            // 
+            this.lblMediana.AutoSize = true;
+            this.lblMediana.Depth = 0;
+            this.lblMediana.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblMediana.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblMediana.Location = new System.Drawing.Point(207, 447);
+            this.lblMediana.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblMediana.Name = "lblMediana";
+            this.lblMediana.Size = new System.Drawing.Size(0, 19);
+            this.lblMediana.TabIndex = 32;
+            // 
             // Form1
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(865, 453);
+            this.ClientSize = new System.Drawing.Size(865, 475);
+            this.Controls.Add(this.lblMediana);
+            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.lblPearson);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.lblFisher);
@@ -506,7 +517,6 @@
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.lblTest);
             this.Controls.Add(this.cbRelativa);
-            this.Controls.Add(this.cbAcumulada);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtFi);
             this.Controls.Add(this.txtXi);
@@ -536,7 +546,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtXi;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtFi;
         private MaterialSkin.Controls.MaterialFlatButton btnClear;
-        private MaterialSkin.Controls.MaterialCheckBox cbAcumulada;
         private MaterialSkin.Controls.MaterialCheckBox cbRelativa;
         private MaterialSkin.Controls.MaterialLabel lblTest;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
@@ -558,5 +567,7 @@
         private MaterialSkin.Controls.MaterialLabel lblFisher;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel lblPearson;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel lblMediana;
     }
 }

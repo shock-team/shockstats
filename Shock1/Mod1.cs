@@ -35,6 +35,18 @@ namespace Shock1
             return listaDeModa.ToArray();
         }
 
+        public float getMediana(DataTable dt)
+        {
+            if (dt.Rows.Count < 2)
+            {
+                return 0;
+            }
+            else
+            {
+                return getLimite(1, 2, dt);
+            }
+        }
+
         public float getMedia(DataTable dt)
         {
             float aux = 0;
