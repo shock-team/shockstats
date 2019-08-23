@@ -113,6 +113,7 @@
             this.txtCuartil.Size = new System.Drawing.Size(75, 23);
             this.txtCuartil.TabIndex = 0;
             this.txtCuartil.UseSystemPasswordChar = false;
+            this.txtCuartil.Click += new System.EventHandler(this.TxtCuartil_Click);
             // 
             // txtDecil
             // 

@@ -8,16 +8,12 @@ namespace Shock1
 {
     public partial class Form1 : MaterialSkin.Controls.MaterialForm
     {
-        Mod1 objMod1 = new Mod1();
-    
-
-
         //
         // INICIALIZADORES
         //
-
-        DataTable dt = new DataTable();
-        DataTable dt2 = new DataTable();
+        Mod1 objMod1 = new Mod1();
+        public static DataTable dt = new DataTable();
+        public static DataTable dt2 = new DataTable();
 
         public Form1()
         {
@@ -42,11 +38,12 @@ namespace Shock1
         public void refreshDatos()
         {
             lblN.Text = objMod1.getN(dt).ToString();
-            lblMedia.Text = (Math.Truncate(100f *objMod1.getMedia(dt)) / 100f).ToString();
-            lblFisher.Text = (Math.Truncate(100f * objMod1.getCoeficienteDeFisher(dt))/100f).ToString();
+            lblMedia.Text = (Math.Truncate(100f * objMod1.getMedia(dt)) / 100f).ToString();
+            
+            lblFisher.Text = (Math.Truncate(100f * objMod1.getCoeficienteDeFisher(dt)) / 100f).ToString();
             lblPearson.Text = (Math.Truncate(100f * objMod1.getCoeficienteDePearson(dt)) / 100f).ToString();
 
-        }        
+        }
 
         public void refreshTabla()
         {
@@ -62,7 +59,7 @@ namespace Shock1
         //
         //VENTANA
         //
-        
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -78,17 +75,18 @@ namespace Shock1
             if (txtFi.Text != "" && txtXi.Text != "")
             {
                 dataGV.DataSource = dt;
-               
-                 if (rbContinuo.Checked)
+
+                if (rbContinuo.Checked)
                 {
                     rbDiscreto.Enabled = false;
-                    dt.Rows.Add(objMod1.getMi(float.Parse(txtXi.Text),float.Parse(txtXi2.Text)), Math.Abs(float.Parse(txtFi.Text)));
+                    dt.Rows.Add(objMod1.getMi(float.Parse(txtXi.Text), float.Parse(txtXi2.Text)), Math.Abs(float.Parse(txtFi.Text)));
                 }
                 else
                 {
                     rbContinuo.Enabled = false;
                     dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
                 }
+
                 refreshDatos();
                 refreshTabla();
 
@@ -112,7 +110,7 @@ namespace Shock1
         private void BtnClear_Click_1(object sender, EventArgs e)
         {
             dt.Rows.Clear();
-            dataGV.DataSource = dt; 
+            dataGV.DataSource = dt;
             refreshDatos();
             rbContinuo.Enabled = true;
             rbDiscreto.Enabled = true;
@@ -122,7 +120,10 @@ namespace Shock1
         {
             if (cbAcumulada.Checked)
             {
-                dt.Columns.Add(new DataColumn("Fk", typeof(float)));
+                if (!dt.Columns.Contains("Fk"))
+                {
+                    dt.Columns.Add(new DataColumn("Fk", typeof(float)));
+                }
                 if (dt.Rows.Count != 0 && dt.Columns.Contains("Fk"))
                 {
                     objMod1.actualizarFk(dt, dataGV);
@@ -151,7 +152,7 @@ namespace Shock1
 
                 if (dt.Rows.Count != 0 && dt.Columns.Contains("Frp"))
                 {
-                    objMod1.actualizarFrp(dt,dataGV);
+                    objMod1.actualizarFrp(dt, dataGV);
                 }
             }
             else if (!cbPorcentual.Checked)
@@ -227,7 +228,7 @@ namespace Shock1
                 lblXi.Visible = true;
                 lblLRI.Visible = false;
                 lblLRS.Visible = false;
-            }      
+            }
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -241,14 +242,14 @@ namespace Shock1
                 dataGV.Refresh();
                 refreshDatos();
                 refreshTabla();
-                
+
             }
             else
             {
                 MessageBox.Show("Seleccione una fila a eliminar", "Aviso", MessageBoxButtons.OK,
                                    MessageBoxIcon.Information);
             }
-            
+
         }
 
         private void BtnTest_Click(object sender, EventArgs e)
@@ -259,7 +260,16 @@ namespace Shock1
 
         private void BtnParticiones_Click(object sender, EventArgs e)
         {
-            //Hide();
+            if (!cbAcumulada.Checked)
+            {
+                dt.Columns.Add(new DataColumn("Fk", typeof(float)));
+                if (dt.Rows.Count != 0 && dt.Columns.Contains("Fk"))
+                {
+                    objMod1.actualizarFk(dt, dataGV);
+                }
+                cbAcumulada.Checked = true;
+            }
+
             Form3 part = new Form3();
             part.ShowDialog();
         }
