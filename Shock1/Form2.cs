@@ -55,7 +55,7 @@ namespace Shock1
         public void refreshTabla()
         {
             objMod1.actualizarFk(dt, dataGV);
-            if (dataGV.Columns.Contains("Frp"))
+            if (dt.Columns.Contains("Frp") || dt2.Columns.Contains("Frp"))
             {
                 objMod1.actualizarFrp(dt, dataGV);
             }
@@ -66,7 +66,14 @@ namespace Shock1
 
         private void txtEntrada_Changed(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
@@ -78,11 +85,18 @@ namespace Shock1
             if (txtFi.Text != "" && txtXi.Text != "")
             {
                 dataGV.DataSource = dt;
-
                 if (rbContinuo.Checked)
                 {
-                    rbDiscreto.Enabled = false;
-                    dt.Rows.Add(objMod1.getMi(float.Parse(txtXi.Text), float.Parse(txtXi2.Text)), Math.Abs(float.Parse(txtFi.Text)));
+                    if (txtXi2.Text != "")
+                    {
+                        rbDiscreto.Enabled = false;
+                        dt.Rows.Add(objMod1.getMi(float.Parse(txtXi.Text), float.Parse(txtXi2.Text)), Math.Abs(float.Parse(txtFi.Text)));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese datos para insertar.", "Aviso", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
@@ -91,17 +105,13 @@ namespace Shock1
                 }
                 refreshTabla();
                 refreshDatos();
-               
 
-
-
-                txtFi.Text = "";
-                txtXi.Text = "";
-                txtXi2.Text = "";
+                txtFi.Clear();
+                txtXi.Clear();
+                txtXi2.Clear();
 
                 ActiveControl = txtXi;
                 txtXi.Focus();
-    
             }
             else
             {
@@ -123,19 +133,45 @@ namespace Shock1
         {
             if (cbPorcentual.Checked)
             {
-                dt.Columns.Add(new DataColumn("Frp", typeof(float)));
-
-                if (dt.Rows.Count != 0 && dt.Columns.Contains("Frp"))
+                if (cbRelativa.Checked)
                 {
-                    objMod1.actualizarFrp(dt, dataGV);
+                    dt2.Columns.Add(new DataColumn("Frp", typeof(float)));
+
+                    if (dt2.Rows.Count != 0 && dt2.Columns.Contains("Frp"))
+                    {
+
+                        objMod1.actualizarFrp(dt2, dataGV);
+                    }
                 }
+                else
+                {
+                    dt.Columns.Add(new DataColumn("Frp", typeof(float)));
+
+                    if (dt.Rows.Count != 0 && dt.Columns.Contains("Frp") || dt2.Columns.Contains("Frp"))
+                    {
+
+                        objMod1.actualizarFrp(dt, dataGV);
+                    }
+                }
+                
             }
             else if (!cbPorcentual.Checked)
             {
-                dt.Columns.Remove("Frp");
-                if (dt.Columns.Contains("Fkrp"))
+                if (cbRelativa.Checked && dt2.Columns.Contains("Frp"))
                 {
-                    dt.Columns.Remove("Fkrp");
+                    dt2.Columns.Remove("Frp");
+                    if (dt2.Columns.Contains("Fkrp"))
+                    {
+                        dt2.Columns.Remove("Fkrp");
+                    }
+                }
+                else if (dt.Columns.Contains("Frp"))
+                {
+                    dt.Columns.Remove("Frp");
+                    if (dt.Columns.Contains("Fkrp"))
+                    {
+                        dt.Columns.Remove("Fkrp");
+                    }
                 }
             }
         }
@@ -226,12 +262,6 @@ namespace Shock1
                                    MessageBoxIcon.Information);
             }
 
-        }
-
-        private void BtnTest_Click(object sender, EventArgs e)
-        {
-            float[] arre = objMod1.getModa(dt);
-            MessageBox.Show(arre[0].ToString());
         }
 
         private void BtnParticiones_Click(object sender, EventArgs e)

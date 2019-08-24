@@ -28,7 +28,6 @@ namespace Shock1
             txtCuartil.TextChanged += new EventHandler(txtCuartil_TextChanged);
             txtDecil.TextChanged += new EventHandler(txtDecil_TextChanged);
             txtPercentil.TextChanged += new EventHandler(txtPercentil_TextChanged);
-
         }
 
 
@@ -36,8 +35,6 @@ namespace Shock1
         {
             if (Form1.dt.Rows.Count != 0)
             {
-               
-
                 if (txtCuartil.Text != "")
                 {
                     float cuartil = objMod1.getLimite(int.Parse(txtCuartil.Text), 4, Form1.dt);
@@ -53,7 +50,7 @@ namespace Shock1
                     float percentil = objMod1.getLimite(int.Parse(txtPercentil.Text), 100, Form1.dt);
                     MessageBox.Show("Percentil número " + txtPercentil.Text + " es: " + (Math.Truncate(100 * percentil) / 100) + ".", "Resultado", MessageBoxButtons.OK);
                 }
-                else
+                else if (txtPP.Text != "" && txtPCP.Text != "")
                 {
                     if (int.Parse(txtPP.Text) > int.Parse(txtPCP.Text))
                     {
@@ -65,15 +62,15 @@ namespace Shock1
                         MessageBox.Show(txtPCP.Text + " particiones en la posición " + txtPP.Text + " es: " + (Math.Truncate(100 * pers) / 100) + ".", "Resultado", MessageBoxButtons.OK);
                     }
                 }
-
-
-
+                else
+                {
+                    MessageBox.Show("Complete algun campo para calcular.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Sin datos no se puede calcular nada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                MessageBox.Show("Sin datos cargados no se puede calcular nada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
             }
-            
         }
 
         void ClearAllText(Control con)
@@ -103,7 +100,6 @@ namespace Shock1
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(txtCuartil.Text, "^([1-4])$") && txtCuartil.Text != "")
             {
-                //MessageBox.Show("Ingresa solo valores entre el 1-4");
                 txtCuartil.Clear();
             }
         }
@@ -111,7 +107,6 @@ namespace Shock1
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(txtDecil.Text, "^([1-9]|10)$") && txtDecil.Text != "")
             {
-                // MessageBox.Show("Ingresa solo valores entre el 1-10");
                 txtDecil.Clear();
             }
         }
@@ -120,7 +115,6 @@ namespace Shock1
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(txtPercentil.Text, "^([1-9]|[1-8][0-9]|9[0-9]|100)$") && txtPercentil.Text != "")
             {
-                //MessageBox.Show("Ingresa solo valores entre el 1-100");
                 txtPercentil.Clear();
             }
         }
@@ -128,11 +122,6 @@ namespace Shock1
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void TxtCuartil_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -51,7 +51,6 @@
             this.lblLRI = new MaterialSkin.Controls.MaterialLabel();
             this.lblLRS = new MaterialSkin.Controls.MaterialLabel();
             this.cbPorcentual = new MaterialSkin.Controls.MaterialCheckBox();
-            this.btnTest = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnParticiones = new MaterialSkin.Controls.MaterialFlatButton();
             this.lblF = new MaterialSkin.Controls.MaterialLabel();
             this.lblFisher = new MaterialSkin.Controls.MaterialLabel();
@@ -127,7 +126,6 @@
             this.txtXi.TabIndex = 0;
             this.txtXi.TabStop = false;
             this.txtXi.UseSystemPasswordChar = false;
-            
             // 
             // txtFi
             // 
@@ -384,22 +382,6 @@
             this.cbPorcentual.UseVisualStyleBackColor = true;
             this.cbPorcentual.CheckedChanged += new System.EventHandler(this.CbPorcentual_CheckedChanged);
             // 
-            // btnTest
-            // 
-            this.btnTest.AutoSize = true;
-            this.btnTest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTest.Depth = 0;
-            this.btnTest.Location = new System.Drawing.Point(742, 424);
-            this.btnTest.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnTest.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Primary = false;
-            this.btnTest.Size = new System.Drawing.Size(45, 36);
-            this.btnTest.TabIndex = 25;
-            this.btnTest.Text = "test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.BtnTest_Click);
-            // 
             // btnParticiones
             // 
             this.btnParticiones.AutoSize = true;
@@ -502,7 +484,6 @@
             this.Controls.Add(this.lblFisher);
             this.Controls.Add(this.lblF);
             this.Controls.Add(this.btnParticiones);
-            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.cbPorcentual);
             this.Controls.Add(this.lblLRS);
             this.Controls.Add(this.lblLRI);
@@ -562,7 +543,6 @@
         private MaterialSkin.Controls.MaterialLabel lblLRI;
         private MaterialSkin.Controls.MaterialLabel lblLRS;
         private MaterialSkin.Controls.MaterialCheckBox cbPorcentual;
-        private MaterialSkin.Controls.MaterialFlatButton btnTest;
         private MaterialSkin.Controls.MaterialFlatButton btnParticiones;
         private MaterialSkin.Controls.MaterialLabel lblF;
         private MaterialSkin.Controls.MaterialLabel lblFisher;
