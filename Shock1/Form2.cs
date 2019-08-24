@@ -109,6 +109,7 @@ namespace Shock1
                 txtFi.Clear();
                 txtXi.Clear();
                 txtXi2.Clear();
+                cbRelativa.Checked = false;
 
                 ActiveControl = txtXi;
                 txtXi.Focus();
@@ -206,6 +207,7 @@ namespace Shock1
                 if (dt.Rows.Count != 0)
                 {
                     dataGV.DataSource = dt;
+                    dataGV.Refresh();
                 }
             }
         }
