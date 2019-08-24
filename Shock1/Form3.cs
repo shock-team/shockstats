@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -40,10 +33,17 @@ namespace Shock1
 
 
         private void BtnCalcular_Click(object sender, EventArgs e)
-        { 
-            float lim = objMod1.getLimite(byte.Parse(txtCuartil.Text), 4, Form1.dt);
-            MessageBox.Show("Cuartil: "+lim.ToString());
+        {
+            if (Form1.dt.Rows.Count != 0)
+            {
 
+                float cuartil = objMod1.getLimite(byte.Parse(txtCuartil.Text), 4, Form1.dt);
+                MessageBox.Show("Cuartil número " + txtCuartil.Text + " es: " + (Math.Truncate(100 * cuartil) / 100) + ".", "Resultado", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Sin datos no se puede calcular nada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+            }
             
         }
 
@@ -82,7 +82,7 @@ namespace Shock1
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(txtDecil.Text, "^([1-9]|10)$") && txtDecil.Text != "")
             {
-               // MessageBox.Show("Ingresa solo valores entre el 1-10");
+                // MessageBox.Show("Ingresa solo valores entre el 1-10");
                 txtDecil.Clear();
             }
         }

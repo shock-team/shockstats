@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
+using AutoUpdaterDotNET;
 
 
 
@@ -24,6 +25,7 @@ namespace Shock1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            AutoUpdater.Start("https://sant11h.github.io/updater.xml");
             AcceptButton = btnInsert;
             dt.Columns.AddRange(new DataColumn[3]
             {
@@ -206,7 +208,7 @@ namespace Shock1
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (dataGV.SelectedRows.Count > 0)
+            if (dataGV.SelectedRows.Count > 0 && dt.Rows.Count != 0)
             {
                 foreach (DataGridViewRow item in dataGV.SelectedRows)
                 {
