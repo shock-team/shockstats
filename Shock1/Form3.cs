@@ -36,9 +36,38 @@ namespace Shock1
         {
             if (Form1.dt.Rows.Count != 0)
             {
+               
 
-                float cuartil = objMod1.getLimite(byte.Parse(txtCuartil.Text), 4, Form1.dt);
-                MessageBox.Show("Cuartil número " + txtCuartil.Text + " es: " + (Math.Truncate(100 * cuartil) / 100) + ".", "Resultado", MessageBoxButtons.OK);
+                if (txtCuartil.Text != "")
+                {
+                    float cuartil = objMod1.getLimite(int.Parse(txtCuartil.Text), 4, Form1.dt);
+                    MessageBox.Show("Cuartil número " + txtCuartil.Text + " es: " + (Math.Truncate(100 * cuartil) / 100) + ".", "Resultado", MessageBoxButtons.OK);
+                }
+                else if (txtDecil.Text != "")
+                {
+                    float decil = objMod1.getLimite(int.Parse(txtDecil.Text), 10, Form1.dt);
+                    MessageBox.Show("Decil número " + txtDecil.Text + " es: " + (Math.Truncate(100 * decil) / 100) + ".", "Resultado", MessageBoxButtons.OK);
+                }
+                else if (txtPercentil.Text != "")
+                {
+                    float percentil = objMod1.getLimite(int.Parse(txtPercentil.Text), 100, Form1.dt);
+                    MessageBox.Show("Percentil número " + txtPercentil.Text + " es: " + (Math.Truncate(100 * percentil) / 100) + ".", "Resultado", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    if (int.Parse(txtPP.Text) > int.Parse(txtPCP.Text))
+                    {
+                        MessageBox.Show("La posición no puede ser mayor a la cantidad de particiones.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        float pers = objMod1.getLimite(int.Parse(txtPP.Text), int.Parse(txtPCP.Text), Form1.dt);
+                        MessageBox.Show(txtPCP.Text + " particiones en la posición " + txtPP.Text + " es: " + (Math.Truncate(100 * pers) / 100) + ".", "Resultado", MessageBoxButtons.OK);
+                    }
+                }
+
+
+
             }
             else
             {

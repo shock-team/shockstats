@@ -127,6 +127,7 @@
             this.txtXi.TabIndex = 0;
             this.txtXi.TabStop = false;
             this.txtXi.UseSystemPasswordChar = false;
+            
             // 
             // txtFi
             // 

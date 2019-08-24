@@ -183,12 +183,12 @@ namespace Shock1
             }
         }
 
-        public float getPosicion(byte i, byte cantidad, DataTable dt)
+        public float getPosicion(int i, int cantidad, DataTable dt)
         {
             return i * getN(dt) / cantidad;
         }
         
-        public float getLRI(byte i, byte cantidad, DataTable dt)
+        public float getLRI(int i, int cantidad, DataTable dt)
         {
             float c = getAmplitud(dt);
             float pos = getPosicion(i, cantidad, dt);
@@ -196,7 +196,12 @@ namespace Shock1
             int j = 0;
             while (j < dt.Rows.Count && dt.Rows[j].Field<float>("Fk") < pos)
             {
-                posFrec = dt.Rows[j+1].Field<float>("Xi");
+                
+                if (dt.Rows.Count == j)
+                {
+                    posFrec = dt.Rows[j].Field<float>("Xi");
+                }
+                else posFrec = dt.Rows[j+1].Field<float>("Xi");
                 j++;
             }
             return posFrec - (c / 2);
@@ -204,10 +209,10 @@ namespace Shock1
 
 
 
-        public float getLimite(byte i, byte cantidad, DataTable dt)
+        public float getLimite(int i, int cantidad, DataTable dt)
         {
             float LRI = getLRI(i,cantidad,dt); 
-            byte posicionFrecuencia = 0;
+            int posicionFrecuencia = 0;
             float posicion = getPosicion(i, cantidad, dt);
             float sumatoriaFrecuenciasAnteriores = 0;
             while (posicionFrecuencia < dt.Rows.Count && dt.Rows[posicionFrecuencia].Field<float>("Fk") < posicion)
@@ -217,11 +222,6 @@ namespace Shock1
             }
             float numerador = (posicion - sumatoriaFrecuenciasAnteriores) * getAmplitud(dt);
             float denominador = dt.Rows[posicionFrecuencia].Field<float>("Fi");
-
-            /*MessageBox.Show("LRI: " + LRI.ToString());
-            MessageBox.Show("numerador: " + numerador.ToString());
-            MessageBox.Show("denominador: " + denominador.ToString());*/
-
             return LRI + (numerador / denominador);
         }
 

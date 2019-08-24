@@ -41,7 +41,6 @@
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.txtPP = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.lblResultado = new MaterialSkin.Controls.MaterialLabel();
             this.btnCalcular = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnSalir = new MaterialSkin.Controls.MaterialFlatButton();
@@ -214,19 +213,6 @@
             this.materialLabel7.TabIndex = 11;
             this.materialLabel7.Text = "Medidas de Concentración";
             // 
-            // materialLabel8
-            // 
-            this.materialLabel8.AutoSize = true;
-            this.materialLabel8.Depth = 0;
-            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(338, 178);
-            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(80, 19);
-            this.materialLabel8.TabIndex = 12;
-            this.materialLabel8.Text = "Resultado:";
-            // 
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
@@ -244,7 +230,7 @@
             this.btnCalcular.AutoSize = true;
             this.btnCalcular.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCalcular.Depth = 0;
-            this.btnCalcular.Location = new System.Drawing.Point(357, 123);
+            this.btnCalcular.Location = new System.Drawing.Point(217, 377);
             this.btnCalcular.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCalcular.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCalcular.Name = "btnCalcular";
@@ -260,7 +246,7 @@
             this.btnSalir.AutoSize = true;
             this.btnSalir.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSalir.Depth = 0;
-            this.btnSalir.Location = new System.Drawing.Point(418, 309);
+            this.btnSalir.Location = new System.Drawing.Point(151, 377);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSalir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSalir.Name = "btnSalir";
@@ -275,11 +261,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 376);
+            this.ClientSize = new System.Drawing.Size(336, 422);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.lblResultado);
-            this.Controls.Add(this.materialLabel8);
             this.Controls.Add(this.materialLabel7);
             this.Controls.Add(this.txtPP);
             this.Controls.Add(this.materialLabel6);
@@ -318,7 +303,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPP;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private MaterialSkin.Controls.MaterialLabel materialLabel8;
         private MaterialSkin.Controls.MaterialLabel lblResultado;
         private MaterialSkin.Controls.MaterialFlatButton btnCalcular;
         private MaterialSkin.Controls.MaterialFlatButton btnSalir;

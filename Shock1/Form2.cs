@@ -239,5 +239,7 @@ namespace Shock1
             Form3 part = new Form3();
             part.ShowDialog();
         }
+
+        
     }
 }
