@@ -27,11 +27,12 @@ namespace Shock1
         {
             AutoUpdater.Start("https://sant11h.github.io/updater.xml");
             AcceptButton = btnInsert;
-            dt.Columns.AddRange(new DataColumn[3]
+            dt.Columns.AddRange(new DataColumn[4]
             {
                 new DataColumn("Xi", typeof(float)),
                 new DataColumn("Fi", typeof(float)),
-                new DataColumn("Fk", typeof(float))
+                new DataColumn("Fk", typeof(float)),
+                new DataColumn("Frp", typeof(float))
             });
 
             txtXi.KeyPress +=(txtEntrada_Changed);
@@ -55,15 +56,15 @@ namespace Shock1
         public void refreshTabla()
         {
             objMod1.actualizarFk(dt, dataGV);
-            if (dt.Columns.Contains("Frp") || dt2.Columns.Contains("Frp"))
-            {
-                objMod1.actualizarFrp(dt, dataGV);
-            }
+            objMod1.actualizarFrp(dt, dataGV);
         }
+
+        
+        
         //
         //VENTANA
         //
-
+        
         private void txtEntrada_Changed(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -82,35 +83,50 @@ namespace Shock1
 
         private void BtnInsert_Click(object sender, EventArgs e)
         {
-            if (txtFi.Text != "" && txtXi.Text != "")
+            if (txtXi.Text != "")
             {
                 dataGV.DataSource = dt;
-                if (rbContinuo.Checked)
+                if (txtFi.Text == "")
                 {
-                    if (txtXi2.Text != "")
-                    {
-                        rbDiscreto.Enabled = false;
-                        dt.Rows.Add(objMod1.getMi(float.Parse(txtXi.Text), float.Parse(txtXi2.Text)), Math.Abs(float.Parse(txtFi.Text)));
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ingrese datos para insertar.", "Aviso", MessageBoxButtons.OK,
-                                   MessageBoxIcon.Information);
-                    }
+                    txtFi.Text = 1.ToString();
+                }
+
+                int pos = objMod1.getPosRepetido(dt, float.Parse(txtXi.Text));
+                if (pos != -1)
+                {
+                    objMod1.sumarRepetido(dt, dataGV, pos, float.Parse(txtFi.Text));
                 }
                 else
                 {
-                    rbContinuo.Enabled = false;
-                    dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
+                    if (rbContinuo.Checked)
+                    {
+                        if (txtXi2.Text != "")
+                        {
+                            rbDiscreto.Enabled = false;
+                            dt.Rows.Add(objMod1.getMi(float.Parse(txtXi.Text), float.Parse(txtXi2.Text)), Math.Abs(float.Parse(txtFi.Text)));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ingrese datos para insertar.", "Aviso", MessageBoxButtons.OK,
+                                       MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        rbContinuo.Enabled = false;
+                        dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
+                    }
                 }
+                
+                
                 refreshTabla();
                 refreshDatos();
 
                 txtFi.Clear();
                 txtXi.Clear();
                 txtXi2.Clear();
-                cbRelativa.Checked = false;
-
+                
+               
                 ActiveControl = txtXi;
                 txtXi.Focus();
             }
@@ -129,54 +145,6 @@ namespace Shock1
             rbContinuo.Enabled = true;
             rbDiscreto.Enabled = true;
         }
-
-        private void CbPorcentual_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbPorcentual.Checked)
-            {
-                if (cbRelativa.Checked)
-                {
-                    dt2.Columns.Add(new DataColumn("Frp", typeof(float)));
-
-                    if (dt2.Rows.Count != 0 && dt2.Columns.Contains("Frp"))
-                    {
-
-                        objMod1.actualizarFrp(dt2, dataGV);
-                    }
-                }
-                else
-                {
-                    dt.Columns.Add(new DataColumn("Frp", typeof(float)));
-
-                    if (dt.Rows.Count != 0 && dt.Columns.Contains("Frp") || dt2.Columns.Contains("Frp"))
-                    {
-
-                        objMod1.actualizarFrp(dt, dataGV);
-                    }
-                }
-                
-            }
-            else if (!cbPorcentual.Checked)
-            {
-                if (cbRelativa.Checked && dt2.Columns.Contains("Frp"))
-                {
-                    dt2.Columns.Remove("Frp");
-                    if (dt2.Columns.Contains("Fkrp"))
-                    {
-                        dt2.Columns.Remove("Fkrp");
-                    }
-                }
-                else if (dt.Columns.Contains("Frp"))
-                {
-                    dt.Columns.Remove("Frp");
-                    if (dt.Columns.Contains("Fkrp"))
-                    {
-                        dt.Columns.Remove("Fkrp");
-                    }
-                }
-            }
-        }
-
 
         private void CbRelativa_CheckedChanged(object sender, EventArgs e)
         {

@@ -50,7 +50,6 @@
             this.btnDelete = new MaterialSkin.Controls.MaterialFlatButton();
             this.lblLRI = new MaterialSkin.Controls.MaterialLabel();
             this.lblLRS = new MaterialSkin.Controls.MaterialLabel();
-            this.cbPorcentual = new MaterialSkin.Controls.MaterialCheckBox();
             this.btnParticiones = new MaterialSkin.Controls.MaterialFlatButton();
             this.lblF = new MaterialSkin.Controls.MaterialLabel();
             this.lblFisher = new MaterialSkin.Controls.MaterialLabel();
@@ -164,7 +163,7 @@
             this.cbRelativa.AutoSize = true;
             this.cbRelativa.Depth = 0;
             this.cbRelativa.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbRelativa.Location = new System.Drawing.Point(730, 373);
+            this.cbRelativa.Location = new System.Drawing.Point(592, 351);
             this.cbRelativa.Margin = new System.Windows.Forms.Padding(0);
             this.cbRelativa.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbRelativa.MouseState = MaterialSkin.MouseState.HOVER;
@@ -365,23 +364,6 @@
             this.lblLRS.Text = "LRS:";
             this.lblLRS.Visible = false;
             // 
-            // cbPorcentual
-            // 
-            this.cbPorcentual.AutoSize = true;
-            this.cbPorcentual.Depth = 0;
-            this.cbPorcentual.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbPorcentual.Location = new System.Drawing.Point(633, 373);
-            this.cbPorcentual.Margin = new System.Windows.Forms.Padding(0);
-            this.cbPorcentual.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cbPorcentual.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cbPorcentual.Name = "cbPorcentual";
-            this.cbPorcentual.Ripple = true;
-            this.cbPorcentual.Size = new System.Drawing.Size(97, 30);
-            this.cbPorcentual.TabIndex = 24;
-            this.cbPorcentual.Text = "Porcentual";
-            this.cbPorcentual.UseVisualStyleBackColor = true;
-            this.cbPorcentual.CheckedChanged += new System.EventHandler(this.CbPorcentual_CheckedChanged);
-            // 
             // btnParticiones
             // 
             this.btnParticiones.AutoSize = true;
@@ -484,7 +466,6 @@
             this.Controls.Add(this.lblFisher);
             this.Controls.Add(this.lblF);
             this.Controls.Add(this.btnParticiones);
-            this.Controls.Add(this.cbPorcentual);
             this.Controls.Add(this.lblLRS);
             this.Controls.Add(this.lblLRI);
             this.Controls.Add(this.btnDelete);
@@ -542,7 +523,6 @@
         private MaterialSkin.Controls.MaterialFlatButton btnDelete;
         private MaterialSkin.Controls.MaterialLabel lblLRI;
         private MaterialSkin.Controls.MaterialLabel lblLRS;
-        private MaterialSkin.Controls.MaterialCheckBox cbPorcentual;
         private MaterialSkin.Controls.MaterialFlatButton btnParticiones;
         private MaterialSkin.Controls.MaterialLabel lblF;
         private MaterialSkin.Controls.MaterialLabel lblFisher;

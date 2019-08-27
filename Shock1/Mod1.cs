@@ -231,7 +231,24 @@ namespace Shock1
             return (LRI + LRS) / 2;
         }
 
+        public int getPosRepetido(DataTable dt, float xi)
+        {
+            int aux = -1;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (dt.Rows[i].Field<float>("Xi") == xi)
+                {
+                    aux = i;
+                }
+            }
+            return aux;
+        }
 
+        public void sumarRepetido(DataTable dt,DataGridView dgv, int pos, float fi)
+        {
+            float aux = dt.Rows[pos].Field<float>("Fi");
+            dgv.Rows[pos].Cells["Fi"].Value = aux + fi;
+        }
 
         public void actualizarFrp(DataTable dt, DataGridView dgv)
         {
