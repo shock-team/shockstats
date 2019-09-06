@@ -117,8 +117,6 @@ namespace Shock1
                         dt.Rows.Add(float.Parse(txtXi.Text), Math.Abs(float.Parse(txtFi.Text)));
                     }
                 }
-                
-                
                 refreshTabla();
                 refreshDatos();
 
