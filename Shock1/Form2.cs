@@ -50,7 +50,7 @@ namespace Shock1
             lblMediana.Text = (Math.Truncate(100f * objMod1.getMediana(dt)) / 100f).ToString();
             lblFisher.Text = (Math.Truncate(100f * objMod1.getCoeficienteDeFisher(dt)) / 100f).ToString();
             lblPearson.Text = (Math.Truncate(100f * objMod1.getCoeficienteDePearson(dt)) / 100f).ToString();
-
+            lblModa.Text = objMod1.getModa(dt)[0].ToString();
         }
 
         public void refreshTabla()

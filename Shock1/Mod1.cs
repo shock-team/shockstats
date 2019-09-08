@@ -23,16 +23,25 @@ namespace Shock1
 
         public float[] getModa(DataTable dt)
         {
-            float Fmax = getFmax(dt);
-            var listaDeModa = new List<float>();
-            for (int i = 0; i < dt.Rows.Count; i++)
+            if (dt.Rows.Count != 0)
             {
-                if (dt.Rows[i].Field<float>("Fi") == Fmax)
+                float Fmax = getFmax(dt);
+                var listaDeModa = new List<float>();
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    listaDeModa.Add(dt.Rows[i].Field<float>("Xi"));
+                    if (dt.Rows[i].Field<float>("Fi") == Fmax)
+                    {
+                        listaDeModa.Add(dt.Rows[i].Field<float>("Xi"));
+                    }
                 }
+                return listaDeModa.ToArray();
             }
-            return listaDeModa.ToArray();
+            else
+            {
+                float[] a = { 0 };
+                return a;
+            }
+            
         }
 
         public float getMediana(DataTable dt)

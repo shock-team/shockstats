@@ -57,13 +57,15 @@
             this.lblPearson = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.lblMediana = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblModa = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGV)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGV
             // 
             this.dataGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGV.Location = new System.Drawing.Point(12, 73);
+            this.dataGV.Location = new System.Drawing.Point(10, 73);
             this.dataGV.Name = "dataGV";
             this.dataGV.Size = new System.Drawing.Size(547, 330);
             this.dataGV.TabIndex = 10;
@@ -147,7 +149,7 @@
             this.btnClear.AutoSize = true;
             this.btnClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnClear.Depth = 0;
-            this.btnClear.Location = new System.Drawing.Point(493, 412);
+            this.btnClear.Location = new System.Drawing.Point(493, 409);
             this.btnClear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnClear.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnClear.Name = "btnClear";
@@ -163,7 +165,7 @@
             this.cbRelativa.AutoSize = true;
             this.cbRelativa.Depth = 0;
             this.cbRelativa.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbRelativa.Location = new System.Drawing.Point(592, 351);
+            this.cbRelativa.Location = new System.Drawing.Point(568, 373);
             this.cbRelativa.Margin = new System.Windows.Forms.Padding(0);
             this.cbRelativa.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbRelativa.MouseState = MaterialSkin.MouseState.HOVER;
@@ -399,7 +401,7 @@
             this.lblFisher.Depth = 0;
             this.lblFisher.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblFisher.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFisher.Location = new System.Drawing.Point(375, 447);
+            this.lblFisher.Location = new System.Drawing.Point(372, 447);
             this.lblFisher.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblFisher.Name = "lblFisher";
             this.lblFisher.Size = new System.Drawing.Size(0, 19);
@@ -455,6 +457,31 @@
             this.lblMediana.Size = new System.Drawing.Size(0, 19);
             this.lblMediana.TabIndex = 32;
             // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(12, 447);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(51, 19);
+            this.materialLabel5.TabIndex = 11;
+            this.materialLabel5.Text = "Moda:";
+            // 
+            // lblModa
+            // 
+            this.lblModa.AutoSize = true;
+            this.lblModa.Depth = 0;
+            this.lblModa.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblModa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblModa.Location = new System.Drawing.Point(66, 447);
+            this.lblModa.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblModa.Name = "lblModa";
+            this.lblModa.Size = new System.Drawing.Size(0, 19);
+            this.lblModa.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
@@ -475,7 +502,9 @@
             this.Controls.Add(this.rbContinuo);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblMedia);
+            this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.materialLabel4);
+            this.Controls.Add(this.lblModa);
             this.Controls.Add(this.lblN);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.lblTest);
@@ -530,5 +559,7 @@
         private MaterialSkin.Controls.MaterialLabel lblPearson;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel lblMediana;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialLabel lblModa;
     }
 }
