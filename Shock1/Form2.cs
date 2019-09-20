@@ -45,12 +45,20 @@ namespace Shock1
         //
         public void refreshDatos()
         {
+            string moda="";
+            for (int i = 0; i < objMod1.getModa(dt).Length; i++)
+            {
+                moda += "["+objMod1.getModa(dt)[i].ToString() + "]";
+            }
+
             lblN.Text = objMod1.getN(dt).ToString();
             lblMedia.Text = (Math.Truncate(100f * objMod1.getMedia(dt)) / 100f).ToString();
             lblMediana.Text = (Math.Truncate(100f * objMod1.getMediana(dt)) / 100f).ToString();
             lblFisher.Text = (Math.Truncate(100f * objMod1.getCoeficienteDeFisher(dt)) / 100f).ToString();
             lblPearson.Text = (Math.Truncate(100f * objMod1.getCoeficienteDePearson(dt)) / 100f).ToString();
-            lblModa.Text = objMod1.getModa(dt)[0].ToString();
+            lblModa.Text = moda;
+            lblS.Text = (Math.Truncate(100f*objMod1.getDesvioEstandar(dt))/100f).ToString();
+            lblCV.Text = (Math.Truncate(100f * objMod1.getCoefVariacion(dt)) / 100f).ToString();
         }
 
         public void refreshTabla()

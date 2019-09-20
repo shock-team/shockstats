@@ -150,6 +150,11 @@ namespace Shock1
             return (float)Math.Sqrt(getVarianza(dt));
         }
 
+        public float getCoefVariacion(DataTable dt)
+        {
+            return (getDesvioEstandar(dt) / getMedia(dt)) * 100;
+        }
+
         public float getCoeficienteDePearson(DataTable dt)
         {
             if (dt.Rows.Count == 0)
@@ -203,7 +208,7 @@ namespace Shock1
             float pos = getPosicion(i, cantidad, dt);
             float posFrec = 0;
             int j = 0;
-            while (j < dt.Rows.Count && dt.Rows[j].Field<float>("Fk") < pos)
+            while (j < dt.Rows.Count && dt.Rows[j].Field<float>("Fk") <= pos)
             {
                 
                 if (dt.Rows.Count == j)
@@ -212,6 +217,10 @@ namespace Shock1
                 }
                 else posFrec = dt.Rows[j+1].Field<float>("Xi");
                 j++;
+            }
+            if (dt.Rows[0].Field<float>("Fk") > pos)
+            {
+                posFrec = dt.Rows[0].Field<float>("Xi");
             }
             return posFrec - (c / 2);
         }
@@ -224,13 +233,30 @@ namespace Shock1
             int posicionFrecuencia = 0;
             float posicion = getPosicion(i, cantidad, dt);
             float sumatoriaFrecuenciasAnteriores = 0;
-            while (posicionFrecuencia < dt.Rows.Count && dt.Rows[posicionFrecuencia].Field<float>("Fk") < posicion)
+
+            if (dt.Rows[0].Field<float>("Fk") > posicion)
+            {
+                sumatoriaFrecuenciasAnteriores = dt.Rows[0].Field<float>("Fk");
+                if (posicionFrecuencia == 0)
+                {
+                    sumatoriaFrecuenciasAnteriores = 0;
+                }
+            }
+
+            while (posicionFrecuencia < dt.Rows.Count && dt.Rows[posicionFrecuencia].Field<float>("Fk") <= posicion)
             {
                 sumatoriaFrecuenciasAnteriores += dt.Rows[posicionFrecuencia].Field<float>("Fi");
                 posicionFrecuencia++;
             }
+
             float numerador = (posicion - sumatoriaFrecuenciasAnteriores) * getAmplitud(dt);
             float denominador = dt.Rows[posicionFrecuencia].Field<float>("Fi");
+            /*MessageBox.Show("LRI= " + LRI);
+            MessageBox.Show("Posicion= " + posicionFrecuencia);
+            MessageBox.Show("n/2= " + posicion);
+            MessageBox.Show("Sum Frec Ante " + sumatoriaFrecuenciasAnteriores);
+            MessageBox.Show("Numerador= " + numerador);
+            MessageBox.Show("Denominador= " + denominador);*/
             return LRI + (numerador / denominador);
         }
 
