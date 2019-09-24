@@ -147,11 +147,19 @@ namespace Shock1
 
         public float getDesvioEstandar(DataTable dt)
         {
+            if (dt.Rows.Count == 0)
+            {
+                return 0;
+            }
             return (float)Math.Sqrt(getVarianza(dt));
         }
 
         public float getCoefVariacion(DataTable dt)
         {
+            if (dt.Rows.Count == 0)
+            {
+                return 0;
+            }
             return (getDesvioEstandar(dt) / getMedia(dt)) * 100;
         }
 
@@ -251,12 +259,6 @@ namespace Shock1
 
             float numerador = (posicion - sumatoriaFrecuenciasAnteriores) * getAmplitud(dt);
             float denominador = dt.Rows[posicionFrecuencia].Field<float>("Fi");
-            /*MessageBox.Show("LRI= " + LRI);
-            MessageBox.Show("Posicion= " + posicionFrecuencia);
-            MessageBox.Show("n/2= " + posicion);
-            MessageBox.Show("Sum Frec Ante " + sumatoriaFrecuenciasAnteriores);
-            MessageBox.Show("Numerador= " + numerador);
-            MessageBox.Show("Denominador= " + denominador);*/
             return LRI + (numerador / denominador);
         }
 

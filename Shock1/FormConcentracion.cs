@@ -5,11 +5,11 @@ using System.Windows.Forms;
 namespace Shock1
 {
 
-    public partial class Form3 : MaterialSkin.Controls.MaterialForm
+    public partial class FormConcentracion : MaterialSkin.Controls.MaterialForm
     {
         Mod1 objMod1 = new Mod1();
 
-        public Form3()
+        public FormConcentracion()
         {
             InitializeComponent();
         }

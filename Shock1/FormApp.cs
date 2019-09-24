@@ -242,7 +242,7 @@ namespace Shock1
 
         private void BtnParticiones_Click(object sender, EventArgs e)
         {
-            Form3 part = new Form3();
+            FormConcentracion part = new FormConcentracion();
             part.ShowDialog();
         }
 
