@@ -5,8 +5,6 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using AutoUpdaterDotNET;
 
-
-
 namespace Shock1
 {
     public partial class Form1 : MaterialForm
@@ -67,8 +65,6 @@ namespace Shock1
             objMod1.actualizarFrp(dt, dataGV);
         }
 
-        
-        
         //
         //VENTANA
         //
@@ -80,13 +76,11 @@ namespace Shock1
             {
                 e.Handled = true;
             }
-
             // only allow one decimal point
             if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
-
         }
 
         private void BtnInsert_Click(object sender, EventArgs e)
@@ -98,7 +92,6 @@ namespace Shock1
                 {
                     txtFi.Text = 1.ToString();
                 }
-
                 int pos = objMod1.getPosRepetido(dt, float.Parse(txtXi.Text));
                 if (pos != -1)
                 {
@@ -127,12 +120,9 @@ namespace Shock1
                 }
                 refreshTabla();
                 refreshDatos();
-
                 txtFi.Clear();
                 txtXi.Clear();
                 txtXi2.Clear();
-                
-               
                 ActiveControl = txtXi;
                 txtXi.Focus();
             }
@@ -229,15 +219,12 @@ namespace Shock1
                 dataGV.Refresh();
                 refreshTabla();
                 refreshDatos();
-                
-
             }
             else
             {
                 MessageBox.Show("Seleccione una fila a eliminar", "Aviso", MessageBoxButtons.OK,
                                    MessageBoxIcon.Information);
             }
-
         }
 
         private void BtnParticiones_Click(object sender, EventArgs e)
@@ -245,7 +232,5 @@ namespace Shock1
             FormConcentracion part = new FormConcentracion();
             part.ShowDialog();
         }
-
-        
     }
 }
