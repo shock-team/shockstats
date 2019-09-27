@@ -11,7 +11,7 @@ namespace Shock1
     {
         public float getK(DataTable dt)
         {
-            float aux = 1f + 3.3f * (float)Math.Log10(getN(dt));
+            float aux = 1f + (3.3f * (float)Math.Log10(getN(dt)));
             return aux;
         }
 
@@ -41,7 +41,6 @@ namespace Shock1
                 float[] a = { 0 };
                 return a;
             }
-            
         }
 
         public float getMediana(DataTable dt)
@@ -71,7 +70,6 @@ namespace Shock1
             {
                 return aux / getN(dt);
             }
-           
         }
 
         public float getN(DataTable dt)
@@ -194,7 +192,6 @@ namespace Shock1
             return aux;
         }
 
-
         public void actualizarFk(DataTable dt, DataGridView dgv)
         {
             float aux = 0;
@@ -218,7 +215,6 @@ namespace Shock1
             int j = 0;
             while (j < dt.Rows.Count && dt.Rows[j].Field<float>("Fk") <= pos)
             {
-                
                 if (dt.Rows.Count == j)
                 {
                     posFrec = dt.Rows[j].Field<float>("Xi");
@@ -232,8 +228,6 @@ namespace Shock1
             }
             return posFrec - (c / 2);
         }
-
-
 
         public float getLimite(int i, int cantidad, DataTable dt)
         {
@@ -262,7 +256,6 @@ namespace Shock1
             return LRI + (numerador / denominador);
         }
 
-
         public float getMi(float LRI, float LRS)
         {
             return (LRI + LRS) / 2;
@@ -289,7 +282,6 @@ namespace Shock1
 
         public void actualizarFrp(DataTable dt, DataGridView dgv)
         {
-
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 dgv.Rows[i].Cells["Frp"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fi") / getN(dt))) / 10;
@@ -304,10 +296,8 @@ namespace Shock1
                     {
                         dgv.Rows[i].Cells["Fkrp"].Value = Math.Truncate(1000 * (dt.Rows[i].Field<float>("Fk") / getN(dt))) / 10;
                     }
-                    
                 }
             }
         }
-
     }
 }
